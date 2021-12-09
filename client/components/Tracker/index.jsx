@@ -23,7 +23,7 @@ const Tracker = () => {
       <h1>Goals</h1>
       <form>
         <h2>Food For Thought</h2>
-        <input type="text" />
+        <input type="text" onChange={()=>updateThoughts(event.target.value)}/>
         <h2>Feeling of the Day</h2>
         <input type="radio" className="circle" name="feeling" value={1} id="bad" style={{ border: '10px solid #ff0000' }} />
         <label className="radio" htmlFor="red">bad</label>
