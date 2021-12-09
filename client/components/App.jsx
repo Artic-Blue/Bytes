@@ -6,21 +6,41 @@ import {
 } from 'react-router-dom';
 
 import Home from './Home/index';
-import Products from './Products/index';
-import Profile from './Profile/index';
-import Lifestyle from './Lifestyle/index';
+import Shop from './Shop/index';
+import Products from './Shop/Products/Products';
+import ProductDetail from './Shop/Products/ProductDetail';
+import Meals from './Shop/Meals/Meals';
+import MealDetail from './Shop/Meals/MealDetail';
+import Farmers from './Shop/Farmers/Farmers';
+import FarmerDetail from './Shop/Farmers/FarmerDetail';
+import Settings from './Settings/index';
+import Tracker from './Tracker/index';
 import NotFound from './NotFound/index';
 
+import GlobalStyle from './App.styled';
+
 const App = () => (
-  <Router>
-    <Routes>
-      <Route exact path="/" element={<Home />} />
-      <Route path="products" element={<Products />} />
-      <Route path="profile" element={<Profile />} />
-      <Route path="lifestyle" element={<Lifestyle />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  </Router>
+  <>
+    <GlobalStyle />
+    <Router>
+      {/* nav bar here */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/tracker" element={<Tracker />} />
+        {/* shop routes */}
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/products" element={<Products />} />
+        <Route path="/shop/products/:productId" element={<ProductDetail />} />
+        <Route path="/shop/meals" element={<Meals />} />
+        <Route path="/shop/meals/:mealId" element={<MealDetail />} />
+        <Route path="/shop/farmers" element={<Farmers />} />
+        <Route path="/shop/farmers/:farmerId" element={<FarmerDetail />} />
+        {/* errors */}
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+    </Router>
+  </>
 );
 
 export default App;
