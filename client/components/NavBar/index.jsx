@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-// import Form from './Form/Form';
-// import List from './List/List';
+import Logo from './Logo/Logo';
+import HomeIcon from './HomeIcon/HomeIcon';
+import LifestyleIcon from './LifestyleIcon/LifestyleIcon';
+import ShopIcon from './ShopIcon/ShopIcon';
+import Login from './Login/Login';
 
 const NavBar = () => {
   useEffect(() => {
@@ -9,7 +12,13 @@ const NavBar = () => {
   }, []);
 
   return (
-    <NavBarDiv>Hello from NavBar</NavBarDiv>
+    <NavBarDiv>
+      <Logo />
+      <HomeIcon />
+      <ShopIcon />
+      <LifestyleIcon />
+      <Login />
+    </NavBarDiv>
   );
 };
 

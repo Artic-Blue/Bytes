@@ -18,7 +18,6 @@ import Settings from './Settings/index';
 import Tracker from './Tracker/index';
 import NotFound from './NotFound/index';
 
-
 import GlobalStyle from './App.styled';
 
 const App = () => (
