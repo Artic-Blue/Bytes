@@ -5,6 +5,7 @@ import {
   Route,
 } from 'react-router-dom';
 
+import AuthenticationForm from './Auth/Auth';
 import Home from './Home/index';
 import Shop from './Shop/index';
 import Products from './Shop/Products/Products';
@@ -26,6 +27,7 @@ const App = () => (
       {/* nav bar here */}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/auth" element={<AuthenticationForm />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/tracker" element={<Tracker />} />
         {/* shop routes */}
