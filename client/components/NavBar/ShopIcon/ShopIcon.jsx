@@ -1,28 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const ShopIcon = () => {
-  function handleClick(e) {
-    e.preventDefault();
-    alert('You clicked Shop.');
-  }
-
-  return (
-    <form onClick={handleClick}>
-      <button type="submit">Shop</button>
-    </form>
-  );
-};
-
-
-
-
-
-
-// (
-//   <div>
-//     Hello from ShopIcon
-//   </div>
-// );
+const ShopIcon = () => (
+  <div>
+    <NavLink to="/shop">Shop</NavLink>
+  </div>
+);
 
 export default ShopIcon;

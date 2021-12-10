@@ -1,17 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const LifestyleIcon = () => {
-  function handleClick(e) {
-    e.preventDefault();
-    alert('You clicked Lifestyle.');
-  }
-
-  return (
-    <form onClick={handleClick}>
-      <button type="submit">Lifestyle</button>
-    </form>
-  );
-};
+const LifestyleIcon = () => (
+  <div>
+    <NavLink to="/tracker">Lifestyle</NavLink>
+  </div>
+);
 
 export default LifestyleIcon;

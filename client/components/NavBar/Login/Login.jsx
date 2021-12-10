@@ -1,17 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Login = () => {
-  function handleClick(e) {
-    e.preventDefault();
-    alert('You clicked Login.');
-  }
-
-  return (
-    <form onClick={handleClick}>
-      <button type="submit">Login</button>
-    </form>
-  );
-};
+const Login = () => (
+  <div>
+    <NavLink to="/login">Login</NavLink>
+  </div>
+);
 
 export default Login;

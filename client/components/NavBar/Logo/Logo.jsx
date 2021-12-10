@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Logo = () => (
   <div>
-    Hello from Logo
+    Placeholder-text-for-Logo
   </div>
 );
 

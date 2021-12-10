@@ -8,7 +8,6 @@ import Login from './Login/Login';
 
 const NavBar = () => {
   useEffect(() => {
-    console.log('NavBar has useEffect');
   }, []);
 
   return (

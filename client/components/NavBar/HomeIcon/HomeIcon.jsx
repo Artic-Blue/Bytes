@@ -1,17 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const HomeIcon = () => {
-  function handleClick(e) {
-    e.preventDefault();
-    alert('You clicked Home.');
-  }
-
-  return (
-    <form onClick={handleClick}>
-      <button type="submit">Home</button>
-    </form>
-  );
-};
+const HomeIcon = () => (
+  <div>
+    <NavLink to="/">Home</NavLink>
+  </div>
+);
 
 export default HomeIcon;
