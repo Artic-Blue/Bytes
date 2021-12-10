@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import Home from './Home/index';
+import NavBar from './NavBar/index';
 import Shop from './Shop/index';
 import Products from './Shop/Products/Products';
 import ProductDetail from './Shop/Products/ProductDetail';
@@ -24,6 +25,7 @@ const App = () => (
     <GlobalStyle />
     <Router>
       {/* nav bar here */}
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/settings" element={<Settings />} />
