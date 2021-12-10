@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import Home from './Home/index';
+import NavBar from './NavBar/index';
 import Shop from './Shop/index';
 import Products from './Shop/Products/Products';
 import ProductDetail from './Shop/Products/ProductDetail';
@@ -15,6 +16,7 @@ import Farmers from './Shop/Farmers/Farmers';
 import FarmerDetail from './Shop/Farmers/FarmerDetail';
 import Settings from './Settings/index';
 import Tracker from './Tracker/index';
+import Login from './Login/index';
 import NotFound from './NotFound/index';
 
 import GlobalStyle from './App.styled';
@@ -23,9 +25,10 @@ const App = () => (
   <>
     <GlobalStyle />
     <Router>
-      {/* nav bar here */}
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/tracker" element={<Tracker />} />
         {/* shop routes */}
