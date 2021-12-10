@@ -6,20 +6,15 @@ import LifestyleIcon from './LifestyleIcon/LifestyleIcon';
 import ShopIcon from './ShopIcon/ShopIcon';
 import Login from './Login/Login';
 
-const NavBar = () => {
-  useEffect(() => {
-  }, []);
-
-  return (
-    <NavBarDiv>
-      <Logo />
-      <HomeIcon />
-      <ShopIcon />
-      <LifestyleIcon />
-      <Login />
-    </NavBarDiv>
-  );
-};
+const NavBar = () => (
+  <NavBarDiv>
+    <Logo />
+    <HomeIcon />
+    <ShopIcon />
+    <LifestyleIcon />
+    <Login />
+  </NavBarDiv>
+);
 
 const NavBarDiv = styled.div`
 
