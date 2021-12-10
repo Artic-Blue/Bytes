@@ -69,22 +69,22 @@ CREATE TABLE tracker (
   tracker_id INTEGER NOT NULL,
   "user_id" INTEGER NOT NULL,
   thought TEXT NULL DEFAULT NULL,
-  emoji_id INTEGER NULL DEFAULT NULL,
+  feeling_id INTEGER NULL DEFAULT NULL,
   track_date DATE NULL DEFAULT NULL,
   PRIMARY KEY (tracker_id)
 );
 
-DROP TABLE IF EXISTS meals CASCADE;
+-- DROP TABLE IF EXISTS meals CASCADE;
 
-CREATE TABLE meals (
-  meal_id INTEGER NOT NULL,
-  ingredients VARCHAR(255) NULL DEFAULT NULL,
-  meal_description TEXT NULL DEFAULT NULL,
-  meal_url VARCHAR(255) NULL DEFAULT NULL,
-  stock INTEGER NULL DEFAULT NULL,
-  categories VARCHAR(255) NULL DEFAULT NULL,
-  -- farmer_id INTEGER NULL DEFAULT NULL,
+-- CREATE TABLE meals (
+--   meal_id INTEGER NOT NULL,
+--   ingredients VARCHAR(255) NULL DEFAULT NULL,
+--   meal_description TEXT NULL DEFAULT NULL,
+--   meal_url VARCHAR(255) NULL DEFAULT NULL,
+--   stock INTEGER NULL DEFAULT NULL,
+--   categories VARCHAR(255) NULL DEFAULT NULL,
+--   -- farmer_id INTEGER NULL DEFAULT NULL,
 
-  PRIMARY KEY (meal_id)
-);
+--   PRIMARY KEY (meal_id)
+-- );
 
