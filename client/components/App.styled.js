@@ -49,6 +49,20 @@ const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
+
+  /* STYLING STARTS HERE */
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+
+    > * {
+      // width: 100%;
+      // max-width: 1400px;
+    }
+  }
 `;
 
 export default GlobalStyle;

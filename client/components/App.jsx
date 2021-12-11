@@ -5,6 +5,7 @@ import {
   Route,
 } from 'react-router-dom';
 
+import AuthPage from './AuthPage/AuthPage';
 import Home from './Home/index';
 import NavBar from './NavBar/index';
 import Shop from './Shop/index';
@@ -29,7 +30,7 @@ const App = () => (
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/auth" element={<AuthPage />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/tracker" element={<Tracker />} />
         <Route path="/cart" element={<Cart />} />
