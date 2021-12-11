@@ -1,8 +1,10 @@
 // client/components/Shop/Products/Products.jsx/
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Grid, Col } from '@mantine/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ProductList = ({ currentCategory }) => {
   const [products, setProducts] = useState([]);
@@ -43,24 +45,48 @@ const ProductList = ({ currentCategory }) => {
     width: 100px;
     object-fit: cover;
 `;
+  // from loungeo
+  const Div = styled.div`
+  height: 95vh;
+  width: 95vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`;
+  const Img = styled.img`
+  box-shadow: 2px 2px 5px darkgrey;
+  position: absolute;
+  height: 90vh;
+  width: 35vw;
+  object-fit: cover;
+  cursor: -webkit-zoom-in;
+`;
+  const Button = styled(FontAwesomeIcon)`
+  position: absolute;
+  font-size: 4.5vh;
+  cursor: pointer;
+  z-index: 10;
+  color: #F8F0FB;
+  -webkit-text-stroke: 1vh white;
+  opacity: 50%;
+  &:hover {
+    opacity: 100;
+  }
+  `;
+
+  const navigate = useNavigate();
 
   return (
-    <div>
+    <Div>
       <h2>Products</h2>
       The current category is:
       {' '}
       {currentCategory}
       <Grid>
-        <Col span={12} md={6} lg={3}>1</Col>
-        <Col span={12} md={6} lg={3}>2</Col>
-        <Col span={12} md={6} lg={3}>3</Col>
-        <Col span={12} md={6} lg={3}>4</Col>
-      </Grid>
-      <Grid>
         {products.map((product) => {
-          console.log(product.product_name);
+          console.log(product.product_id);
           return (
-            <Col span={12} md={6} lg={3}>
+            <Col span={6} sm={3} md={3} lg={3} onClick={() => navigate(`/shop/products/${product.product_id}`)}>
               <p>{product.product_name}</p>
               <PaddedImages src={product.image_url} alt="" />
             </Col>
@@ -69,7 +95,7 @@ const ProductList = ({ currentCategory }) => {
         })}
       </Grid>
 
-    </div>
+    </Div>
   );
 };
 
