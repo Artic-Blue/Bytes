@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Grid, Col } from '@mantine/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ProductList = ({ currentCategory }) => {
   const [products, setProducts] = useState([]);
@@ -61,18 +61,18 @@ const ProductList = ({ currentCategory }) => {
   object-fit: cover;
   cursor: -webkit-zoom-in;
 `;
-  const Button = styled(FontAwesomeIcon)`
-  position: absolute;
-  font-size: 4.5vh;
-  cursor: pointer;
-  z-index: 10;
-  color: #F8F0FB;
-  -webkit-text-stroke: 1vh white;
-  opacity: 50%;
-  &:hover {
-    opacity: 100;
-  }
-  `;
+  // const Button = styled(FontAwesomeIcon)`
+  // position: absolute;
+  // font-size: 4.5vh;
+  // cursor: pointer;
+  // z-index: 10;
+  // color: #F8F0FB;
+  // -webkit-text-stroke: 1vh white;
+  // opacity: 50%;
+  // &:hover {
+  //   opacity: 100;
+  // }
+  // `;
 
   const navigate = useNavigate();
 
@@ -88,7 +88,7 @@ const ProductList = ({ currentCategory }) => {
           return (
             <Col span={6} sm={3} md={3} lg={3} onClick={() => navigate(`/shop/products/${product.product_id}`)}>
               <p>{product.product_name}</p>
-              <PaddedImages src={product.image_url} alt="" />
+              <PaddedImages src="images/butternut-squash-apple-soup-365210.jpg" alt="" />
             </Col>
 
           );
