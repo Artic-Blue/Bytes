@@ -2,10 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 // import styled from 'styled-components';
 
-const Login = () => (
+const CartIcon = () => (
   <div>
-    <NavLink to="/auth">Login</NavLink>
+    <NavLink to="/cart">Cart</NavLink>
   </div>
 );
 
-export default Login;
+export default CartIcon;

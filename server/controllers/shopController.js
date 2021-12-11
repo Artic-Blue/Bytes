@@ -12,6 +12,7 @@ exports.exampleGet = async (req, res) => {
 
     res.send(result.rows);
   } catch (err) {
+    console.log('Error: ', err.message);
     res.sendStatus(500);
   }
 };
