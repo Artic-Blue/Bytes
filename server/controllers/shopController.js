@@ -16,3 +16,18 @@ exports.exampleGet = async (req, res) => {
     res.sendStatus(500);
   }
 };
+
+exports.GetProductDetails = async (req, res) => {
+  const { id } = req.params;
+  const query = `
+    SELECT * FROM products WHERE product_id = ${id}
+  `;
+
+  try {
+    const result = await queryDB(pool, query);
+
+    res.send(result.rows);
+  } catch (err) {
+    res.sendStatus(500);
+  }
+};
