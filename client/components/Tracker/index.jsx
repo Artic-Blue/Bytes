@@ -10,14 +10,43 @@ const Tracker = () => {
 
   return (
     <TrackerDiv>
+      <NavBar>
+        Hello
+
+      </NavBar>
+
+      <Banner>
+
+        Banner
+      </Banner>
       <Form />
-      <List />
+
+      <StyledList />
     </TrackerDiv>
   );
 };
 
-const TrackerDiv = styled.div`
+const NavBar = styled.div`
+  overflow: hidden;
+  background-color: #333;
+`
 
+const Banner = styled.div`
+  overflow: hidden;
+  background-color: #f3ebc9;
+`
+
+const TrackerDiv = styled.div`
+  background-color: #b6e2ff;
+  display: grid;
+  overflow: auto;
+  padding: 10px;
+`;
+
+const StyledList = styled(List)`
+color: white;
+  padding: 10px;
+  background-color: green;
 `;
 
 export default Tracker;
