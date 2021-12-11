@@ -11,7 +11,7 @@ const List = () => {
   const [renderCount, setRenderCount] = useState(4);
 
   useEffect(() => {
-    axios.get('/tracker/list')
+    axios.get('/tracker/getList')
       .then(({data}) => setThoughtsList(data))
       .catch((err) => console.log("didn't get the data with error: ", err));
   }, []);

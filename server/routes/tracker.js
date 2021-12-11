@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/example', trackerController.exampleGet);
 
-router.get('/list', trackerController.getList);
+router.get('/getList', trackerController.getList);
 
 router.post('/postListItem', trackerController.postListItem);
 
