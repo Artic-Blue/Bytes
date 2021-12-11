@@ -10,18 +10,18 @@ const List = () => {
   const [renderCount, setRenderCount] = useState(4);
 
   useEffect(() => {
-    setThoughtsList(dummyData.splice(0, renderAmount));
+    setThoughtsList(dummyData.slice(0, renderAmount));
   }, []);
 
   const setRenderCountHandler = () => {
-    if (renderCount < thoughtsList.length) {
+    if (renderCount <= thoughtsList.length) {
       setRenderCount((prevRenderCount) => prevRenderCount + 4);
       console.log('Render Count: ', renderCount);
       console.log('Pre Render Amount: ', renderAmount);
     } else if (renderCount >= thoughtsList.length) {
       setRenderAmount((prevRenderAmount) => prevRenderAmount + 20);
       console.log('Render Amount: ', renderAmount);
-      setThoughtsList(thoughtsList.concat(dummyData.splice(renderAmount - 20, renderAmount))); //[ 0, 1, ...args]
+      setThoughtsList(thoughtsList.concat(dummyData.slice(renderAmount, renderAmount + 20)));
       setRenderCount((prevRenderCount) => prevRenderCount + 4);
       console.log('Updated Render Count: ', renderCount);
       console.log('Actual Array Of Data: ', thoughtsList);
