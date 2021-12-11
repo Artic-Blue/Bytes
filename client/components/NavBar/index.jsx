@@ -4,6 +4,7 @@ import Logo from './Logo/Logo';
 import HomeIcon from './HomeIcon/HomeIcon';
 import LifestyleIcon from './LifestyleIcon/LifestyleIcon';
 import ShopIcon from './ShopIcon/ShopIcon';
+import CartIcon from './CartIcon/CartIcon';
 import Login from './Login/Login';
 
 const NavBar = () => (
@@ -12,6 +13,7 @@ const NavBar = () => (
     <HomeIcon />
     <ShopIcon />
     <LifestyleIcon />
+    <CartIcon />
     <Login />
   </NavBarDiv>
 );

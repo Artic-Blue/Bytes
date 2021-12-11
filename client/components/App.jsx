@@ -16,6 +16,7 @@ import Farmers from './Shop/Farmers/Farmers';
 import FarmerDetail from './Shop/Farmers/FarmerDetail';
 import Settings from './Settings/index';
 import Tracker from './Tracker/index';
+import Cart from './Cart/index';
 import Login from './Login/index';
 import NotFound from './NotFound/index';
 
@@ -31,6 +32,7 @@ const App = () => (
         <Route path="/login" element={<Login />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/tracker" element={<Tracker />} />
+        <Route path="/cart" element={<Cart />} />
         {/* shop routes */}
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/products" element={<Products />} />
