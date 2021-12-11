@@ -42,7 +42,7 @@ const ProductList = ({ currentCategory }) => {
 
   const PaddedImages = styled.img`
     height: 100px;
-    width: 100px;
+    width: 160px;
     object-fit: cover;
 `;
   // from loungeo
@@ -88,7 +88,7 @@ const ProductList = ({ currentCategory }) => {
           return (
             <Col span={6} sm={3} md={3} lg={3} onClick={() => navigate(`/shop/products/${product.product_id}`)}>
               <p>{product.product_name}</p>
-              <PaddedImages src="images/butternut-squash-apple-soup-365210.jpg" alt="" />
+              <PaddedImages src={product.image_url} alt="" />
             </Col>
 
           );
