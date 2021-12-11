@@ -11,7 +11,7 @@ const ListItem = ({ item }) => (
     <h2>{item.feeling_id}</h2>
     {/* <br /> */}
     <h1>Date: </h1>
-    <h2>{item.track_date}</h2>
+    <h2>{item.track_date.split('T')[0]}</h2>
     <br />
   </>
 );

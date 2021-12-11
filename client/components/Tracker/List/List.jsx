@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import dummyData from './dummy_data';
 import ListItem from './ListItem';
@@ -10,8 +11,14 @@ const List = () => {
   const [renderCount, setRenderCount] = useState(4);
 
   useEffect(() => {
-    setThoughtsList(dummyData.slice(0, renderAmount));
+    axios.get('/tracker/getList')
+      .then(({data}) => setThoughtsList(data))
+      .catch((err) => console.log("didn't get the data with error: ", err));
   }, []);
+
+  // useEffect(() => {
+  //   setThoughtsList(dummyData.slice(0, renderAmount));
+  // }, []);
 
   const setRenderCountHandler = () => {
     if (renderCount <= thoughtsList.length) {
