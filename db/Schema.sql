@@ -30,7 +30,7 @@ CREATE TABLE products (
 DROP TABLE IF EXISTS cart CASCADE;
 
 CREATE TABLE cart (
-  cart_id INTEGER NOT NULL,
+  cart_id SERIAL NOT NULL,
   "user_id" INTEGER NOT NULL,
   product_id INTEGER NOT NULL,
   cart_quantity INTEGER NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE cart (
 DROP TABLE IF EXISTS "user" CASCADE;
 
 CREATE TABLE "user" (
-  "user_id" INTEGER NOT NULL,
+  "user_id" SERIAL NOT NULL,
   "user_name" VARCHAR(255) NULL DEFAULT NULL,
   pass_key VARCHAR(255) NULL DEFAULT NULL,
   email VARCHAR(255) NULL DEFAULT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE farmer (
 DROP TABLE IF EXISTS tracker CASCADE;
 
 CREATE TABLE tracker (
-  tracker_id INTEGER NOT NULL,
+  tracker_id SERIAL NOT NULL,
   "user_id" INTEGER NOT NULL,
   thought TEXT NULL DEFAULT NULL,
   feeling_id INTEGER NULL DEFAULT NULL,
