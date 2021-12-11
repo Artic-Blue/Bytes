@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const Login = () => (
   <div>
-    <NavLink to="/login">Login</NavLink>
+    <NavLink to="/auth">Login</NavLink>
   </div>
 );
 

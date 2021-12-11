@@ -54,23 +54,22 @@ const AuthenticationForm = (
   });
 
   const handleSubmit = () => {
-    setLoading(true);
-    setError(null);
-    setTimeout(() => {
-      setLoading(false);
-      setError(
-        formType === 'register'
-          ? 'User with this email already exists'
-          : 'User with this email does not exist',
-      );
-    }, 3000);
+    // setLoading(true);
+    // setError(null);
+    // setTimeout(() => {
+    //   setLoading(false);
+    //   setError(
+    //     formType === 'register'
+    //       ? 'User with this email already exists'
+    //       : 'User with this email does not exist',
+    //   );
+    // }, 3000);
   };
 
   return (
     <Paper
-      padding={noPadding ? 0 : 'lg'}
-      shadow={noShadow ? null : 'sm'}
       style={{
+        padding: '10px',
         position: 'relative',
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
         width: '500px',
@@ -147,7 +146,7 @@ const AuthenticationForm = (
                 : "Don't have an account? Register"}
             </Anchor>
 
-            <Button color="blue" type="submit">
+            <Button color="orange" type="submit">
               {formType === 'register' ? 'Register' : 'Login'}
             </Button>
           </Group>
