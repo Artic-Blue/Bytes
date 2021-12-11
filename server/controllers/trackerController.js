@@ -45,7 +45,7 @@ exports.postListItem = async (req, res) => {
   try {
     const result = await queryDB(pool, query, reqParams);
 
-    res.sendStatus(204);
+    res.sendStatus(201);
   } catch (err) {
     res.sendStatus(500);
   }
