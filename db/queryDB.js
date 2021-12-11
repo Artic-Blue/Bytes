@@ -1,8 +1,8 @@
-const queryDB = async (pool, query) => {
+const queryDB = async (pool, query, reqParams) => {
   const client = await pool.connect();
 
   try {
-    const result = await client.query(query);
+    const result = await client.query(query, reqParams);
     return result;
   } catch (err) {
     console.log('Error: ', err);

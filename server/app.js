@@ -5,6 +5,7 @@ const trackerRouter = require('./routes/tracker');
 const app = express();
 
 app.use(express.static('public'));
+app.use(express.json());
 
 app.use('/shop', shopRouter);
 app.use('/tracker', trackerRouter);
