@@ -5,24 +5,24 @@ import dummyData from './dummy_data';
 import ListItem from './ListItem';
 
 const List = () => {
-  const [renderAmount, updateRenderAmount] = useState(20);
-  const [thoughtsList, updateThoughtsList] = useState([]);
-  const [renderCount, updateRenderCount] = useState(4);
+  const [renderAmount, setRenderAmount] = useState(20);
+  const [thoughtsList, setThoughtsList] = useState([]);
+  const [renderCount, setRenderCount] = useState(4);
 
   useEffect(() => {
-    updateThoughtsList(dummyData.splice(0, renderAmount));
+    setThoughtsList(dummyData.splice(0, renderAmount));
   }, []);
 
-  const updateRenderCountHandler = () => {
-    if (renderCount + 1 < thoughtsList.length) {
-      updateRenderCount(renderCount + 4);
+  const setRenderCountHandler = () => {
+    if (renderCount < thoughtsList.length) {
+      setRenderCount((prevRenderCount) => prevRenderCount + 4);
       console.log('Render Count: ', renderCount);
       console.log('Pre Render Amount: ', renderAmount);
-    } else if (renderCount + 1 > thoughtsList.length) {
-      updateRenderAmount(renderAmount + 20);
+    } else if (renderCount >= thoughtsList.length) {
+      setRenderAmount((prevRenderAmount) => prevRenderAmount + 20);
       console.log('Render Amount: ', renderAmount);
-      updateThoughtsList(thoughtsList.concat(dummyData.splice(renderAmount - 20, renderAmount)));
-      updateRenderCount(renderCount + 4);
+      setThoughtsList(thoughtsList.concat(dummyData.splice(renderAmount - 20, renderAmount))); //[ 0, 1, ...args]
+      setRenderCount((prevRenderCount) => prevRenderCount + 4);
       console.log('Updated Render Count: ', renderCount);
       console.log('Actual Array Of Data: ', thoughtsList);
       console.log('Updated Render Amount: ', renderAmount);
@@ -34,27 +34,27 @@ const List = () => {
 
   /*
 
-  const updateRenderCountHandler = () => {
+  const setRenderCountHandler = () => {
     if (renderCount + 1 < thoughtsList.length) {~
-      updateRenderCount(renderCount + 4);
+      setRenderCount(renderCount + 4);
       console.log('Render Count: ', renderCount)
     } else if (renderCount + 1 > thoughtsList.length) {
-      updateRenderAmount(renderAmount + 20);
+      setRenderAmount(renderAmount + 20);
       console.log('Render Amount: ', renderAmount)
-      updateThoughtsList(dummyData.splice(0, renderAmount));
-      updateRenderCount(renderCount + 4);
+      setThoughtsList(dummyData.splice(0, renderAmount));
+      setRenderCount(renderCount + 4);
       console.log('Updated Render Count: ', renderCount)
 
     }
   };
 
-  */~
+  */
 
   return (
     <>
       <h2>List</h2>
       {thoughtsList.filter((item) => thoughtsList.indexOf(item) < renderCount).map((item) => <ListItem item={item} />)}
-      <button onClick={() => updateRenderCountHandler()}>Load More</button>
+      <button onClick={() => setRenderCountHandler()}>Load More</button>
     </>
   );
 };
