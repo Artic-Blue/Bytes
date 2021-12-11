@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { useUser } from '../../../context/UserContext';
 
 const Form = ({ getList }) => {
   const [feeling, updateFeeling] = useState('');
   const [thoughts, updateThoughts] = useState('');
+  const user = useUser();
+  console.log('useContext -> ', user);
 
+//// Last changes of Saturday the 11th of December
+// working UseContext yay! Remember destructure
+
+  // console.log(props);
   const handleSubmit = (event) => {
     event.preventDefault();
 
