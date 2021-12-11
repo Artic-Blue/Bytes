@@ -4,7 +4,7 @@ const pool = require('../../db/index');
 exports.exampleGet = async (req, res) => {
   // SAMPLE QUERY
   const query = `
-    SELECT * FROM products LIMIT 10
+    SELECT * FROM products LIMIT 10 OFFSET 100
   `;
 
   try {
