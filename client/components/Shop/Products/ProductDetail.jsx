@@ -18,6 +18,12 @@ const ProductDetail = () => {
   };
   useEffect(getProductDetails, []);
 
+  const PaddedImages = styled.img`
+    height: 100px;
+    width: 160px;
+    object-fit: cover;
+`;
+
   return (
     <div>
       <h2>Product Details</h2>
