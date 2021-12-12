@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { useForm } from '@mantine/hooks';
 import {
   TextInput,
@@ -12,6 +14,8 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 
+import { useUserUpdate } from '../../../context/UserContext';
+
 const AuthenticationForm = (
   noShadow,
   noPadding,
@@ -22,6 +26,8 @@ const AuthenticationForm = (
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const theme = useMantineTheme();
+  const updateUser = useUserUpdate();
+  const navigate = useNavigate();
 
   const toggleFormType = () => {
     setFormType((current) => (current === 'register' ? 'login' : 'register'));
@@ -53,17 +59,31 @@ const AuthenticationForm = (
     },
   });
 
-  const handleSubmit = () => {
-    // setLoading(true);
-    // setError(null);
-    // setTimeout(() => {
-    //   setLoading(false);
-    //   setError(
-    //     formType === 'register'
-    //       ? 'User with this email already exists'
-    //       : 'User with this email does not exist',
-    //   );
-    // }, 3000);
+  const handleSubmit = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const fname = form.getInputProps('firstName').value;
+      const lname = form.getInputProps('lastName').value;
+      const email = form.getInputProps('email').value;
+      const password = form.getInputProps('password').value;
+
+      const result = await axios.post(`/auth/${formType}`, {
+        fname, lname, email, password,
+      });
+
+      updateUser(result.data.user_id);
+      navigate('/shop');
+    } catch (err) {
+      setError(
+        formType === 'register'
+          ? 'User with this email already exists'
+          : 'User with this email does not exist',
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
