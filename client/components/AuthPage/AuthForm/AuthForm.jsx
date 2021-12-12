@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from '@mantine/hooks';
@@ -79,9 +79,8 @@ const AuthenticationForm = (
       setError(
         formType === 'register'
           ? 'User with this email already exists'
-          : 'User with this email does not exist',
+          : 'User with this email/password combo does not exist',
       );
-    } finally {
       setLoading(false);
     }
   };
