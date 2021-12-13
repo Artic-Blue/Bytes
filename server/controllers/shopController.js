@@ -1,10 +1,10 @@
 const queryDB = require('../../db/queryDB');
 const pool = require('../../db/index');
 
-exports.exampleGet = async (req, res) => {
+exports.getProducts = async (req, res) => {
   // SAMPLE QUERY
   const query = `
-    SELECT * FROM products WHERE categories = 'Meals'
+    SELECT * FROM products WHERE categories = 'Meal'
   `;
 
   try {
@@ -12,6 +12,7 @@ exports.exampleGet = async (req, res) => {
 
     res.send(result.rows);
   } catch (err) {
+    console.log('Error: ', err.message);
     res.sendStatus(500);
   }
 };
@@ -27,7 +28,6 @@ exports.GetProductDetails = async (req, res) => {
 
     res.send(result.rows);
   } catch (err) {
-    console.log('Error: ', err.message);
     res.sendStatus(500);
   }
 };
