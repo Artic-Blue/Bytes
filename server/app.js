@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const authRouter = require('./routes/auth');
 const shopRouter = require('./routes/shop');
 const trackerRouter = require('./routes/tracker');
+const authRouter = require('./routes/auth');
 
 const app = express();
 app.use(cors());

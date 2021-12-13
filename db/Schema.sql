@@ -23,6 +23,8 @@ CREATE TABLE products (
   ingredients_url VARCHAR(255) NULL DEFAULT NULL,
   stock INTEGER NULL DEFAULT NULL,
   farmer_id INTEGER NULL DEFAULT NULL,
+  instructions TEXT NULL DEFAULT NULL,
+  price INTEGER NULL DEFAULT NULL,
 
   PRIMARY KEY (product_id)
 );
