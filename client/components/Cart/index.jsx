@@ -6,7 +6,7 @@ const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const getCart = () => {
-    axios.get('/shop/products/2')
+    axios.get('/shop/products/34')
       .then((data) => {
         // console.log('The result of Cart get request: ', data.data[0]);
         if (data) {
