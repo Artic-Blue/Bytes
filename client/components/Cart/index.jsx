@@ -3,23 +3,40 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([
-    'Hard-coded dummy item',
-    'Not from a real API call',
-  ]);
+  const [cartItems, setCartItems] = useState([]);
 
   const getCart = () => {
-    axios.get('/shop/products/1')
+    axios.get('/shop/products/2')
       .then((data) => {
-        // console.log('The result of Cart get request: ', data.data[0].product_name);
-        setCartItems([data.data[0].product_name]);
+        // console.log('The result of Cart get request: ', data.data[0]);
+        setCartItems([{
+          product_name: data.data[0].product_name,
+          image_url: data.data[0].image_url,
+          price: data.data[0].price,
+        }]);
       })
-      .catch((err) => console.log('Cart get request failed: ', err));
+      .catch((err) => {
+        console.log('Cart get request failed: ', err);
+      });
   };
 
   useEffect(getCart, []);
 
-  const cartItemsAsListElements = cartItems.map((item) => <li>{item}</li>);
+  const cartItemsAsListElements = cartItems.map((item) => (
+    <li>
+      <div>
+        {item.product_name}
+      </div>
+      <div>
+        <img src={item.image_url} alt="None" />
+      </div>
+      <div>
+        {' '}
+        $
+        {item.price}
+      </div>
+    </li>
+  ));
 
   function checkOut(e) {
     e.preventDefault();
