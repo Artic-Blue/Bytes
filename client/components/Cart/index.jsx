@@ -9,11 +9,13 @@ const Cart = () => {
     axios.get('/shop/products/2')
       .then((data) => {
         // console.log('The result of Cart get request: ', data.data[0]);
-        setCartItems([{
-          product_name: data.data[0].product_name,
-          image_url: data.data[0].image_url,
-          price: data.data[0].price,
-        }]);
+        if (data) {
+          setCartItems([{
+            product_name: data.data[0].product_name,
+            image_url: data.data[0].image_url,
+            price: data.data[0].price,
+          }]);
+        }
       })
       .catch((err) => {
         console.log('Cart get request failed: ', err);
