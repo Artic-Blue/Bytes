@@ -7,7 +7,7 @@ const Form = () => {
   const [thoughts, updateThoughts] = useState('');
 
   const handleSubmit = (event) => {
-    //(user_id, thought, feeling_id, track_date)
+    // (user_id, thought, feeling_id, track_date)
 
     const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
 
