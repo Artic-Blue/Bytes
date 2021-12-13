@@ -1,12 +1,24 @@
 /* eslint-disable no-alert */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Cart = () => {
-  const cartItems = [
-    'Milk',
-    'Strawberries',
-    'Avocados',
-  ];
+  const [cartItems, setCartItems] = useState([
+    'Hard-coded dummy item',
+    'Not from a real API call',
+  ]);
+
+  const getCart = () => {
+    axios.get('/shop/products/1')
+      .then((data) => {
+        // console.log('The result of Cart get request: ', data.data[0].product_name);
+        setCartItems([data.data[0].product_name]);
+      })
+      .catch((err) => console.log('Cart get request failed: ', err));
+  };
+
+  useEffect(getCart, []);
+
   const cartItemsAsListElements = cartItems.map((item) => <li>{item}</li>);
 
   function checkOut(e) {
