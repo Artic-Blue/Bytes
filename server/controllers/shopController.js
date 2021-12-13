@@ -31,3 +31,18 @@ exports.GetProductDetails = async (req, res) => {
     res.sendStatus(500);
   }
 };
+
+exports.postCart = async (req, res) => {
+  const { userId, productId, quantity } = req.body;
+  const query = `
+    INSERT INTO cart(user_id, product_id, cart_quantity) VALUES (${userId}, ${productId}, ${quantity})
+  `;
+
+  try {
+    const result = await queryDB(pool, query);
+
+    res.send(result.rows);
+  } catch (err) {
+    res.sendStatus(500);
+  }
+};
