@@ -20,6 +20,17 @@ const ProductDetail = () => {
   };
   useEffect(getProductDetails, []);
 
+  const allowedAmount = productDetails.stock > 9 ? 9 : productDetails.stock;
+
+  const CartForm = styled.form`
+  height: 12vh;
+  width: 35vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  `;
+
   const ProductBox = styled.div`
     display: flex;
     width: 100vw;
@@ -48,6 +59,18 @@ const ProductDetail = () => {
   text-align: center;
   `;
 
+  const CartButton = styled.input`
+  font-size: 2rem;
+  border: none;
+  color: white;
+  background: #262730;
+  width: 25vw;
+  height: 7vh;
+
+  &:hover {
+    background: #7D8491;
+  }`;
+
   return (
     <div>
       <ProductBox>
@@ -64,18 +87,27 @@ const ProductDetail = () => {
             {' '}
             {productDetails.categories}
           </p>
-          <div>
+          <CartForm onSubmit={(event) => {
+            event.preventDefault();
+            // console.log(params.productId);
+            axios.put('http://localhost:3000/shop/cart', {
+              userId: 245,
+              productId: params.productId,
+              quantity: cartValue,
+            });
+          }}
+          >
             <StyledSelect defaultValue="1" value={cartValue} onChange={(e) => { setCartValue(e.target.value); }}>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              {[...Array(allowedAmount).keys()].map((quantity) => (
+                <option>{quantity + 1}</option>
+              ))}
 
             </StyledSelect>
-
-            <button onClick={() => alert('Clicked')}>Add to Basket</button>
-          </div>
+            <CartButton
+              type="submit"
+              value="Add to Basket"
+            />
+          </CartForm>
         </SideBox>
       </ProductBox>
 

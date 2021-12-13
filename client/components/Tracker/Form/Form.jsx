@@ -14,8 +14,7 @@ const Form = ({ getList }) => {
 
   // console.log(props);
   const handleSubmit = (event) => {
-    // (user_id, thought, feeling_id, track_date)
-
+    event.preventDefault();
     const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
 
     axios.post('/tracker/postListItem', {
