@@ -46,13 +46,13 @@ const ProductList = ({ currentCategory }) => {
     object-fit: cover;
 `;
 //   // from loungeo
-//   const Div = styled.div`
-//   height: 95vh;
-//   width: 95vw;
-//   position: relative;
-//   display: flex;
-//   flex-direction: column;
-// `;
+  const Div = styled.div`
+  height: 95vh;
+  width: 95vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`;
 //   const Img = styled.img`
 //   box-shadow: 2px 2px 5px darkgrey;
 //   position: absolute;
