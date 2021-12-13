@@ -9,12 +9,12 @@ const Form = ({ getList }) => {
   const user = useUser();
   console.log('useContext -> ', user);
 
-//// Last changes of Saturday the 11th of December
-// working UseContext yay! Remember destructure
 
-  // console.log(props);
+
   const handleSubmit = (event) => {
+
     event.preventDefault();
+    
     const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
 
     axios.post('/tracker/postListItem', {

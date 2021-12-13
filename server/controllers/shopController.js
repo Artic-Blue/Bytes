@@ -35,16 +35,10 @@ exports.GetProductDetails = async (req, res) => {
 exports.postCart = async (req, res) => {
   const { userId, productId, quantity } = req.body;
   const query = `
-    SELECT cart_quantity FROM cart WHERE user_id = ${userId} && product_id = ${productId}
-  `;
-  const query2 = `
-  INSERT INTO cart(user_id, product_id, cart_quantity) VALUES (${userId}, ${productId}, ${quantity})
+  INSERT INTO cart(user_id, product_id, cart_quantity) VALUES (${userId}, ${productId}, ${quantity}) ON CONFLICT (user_id, product_id) DO UPDATE SET cart_quantity = cart.cart_quantity + ${quantity}
 `;
   try {
-    const result = await queryDB(pool, query);
-    console.log(result);
-    quantity += await result.rows.cart_quantity;
-    await queryDB(pool, query2);
+    await queryDB(pool, query);
     res.sendStatus(201);
   } catch (err) {
     res.sendStatus(500);

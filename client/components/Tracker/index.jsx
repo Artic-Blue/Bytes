@@ -26,6 +26,7 @@ const Tracker = () => {
 
         Banner
       </Banner>
+    
       <Form getList={getList} />
 
       <StyledList
