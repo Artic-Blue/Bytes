@@ -8,6 +8,7 @@ import { Grid, Col } from '@mantine/core';
 const ProductDetail = () => {
   const params = useParams();
   const [productDetails, setProductDetails] = useState({});
+  const [cartValue, setCartValue] = useState(1);
 
   const getProductDetails = () => {
     axios.get(`http://localhost:3000/shop/products/${params.productId}`)
@@ -42,8 +43,8 @@ const ProductDetail = () => {
   `;
 
   const StyledSelect = styled.select`
-  width: 5vw;
-  height: 7vh;
+  width: 100px;
+  height: 40px;
   text-align: center;
   `;
 
@@ -64,7 +65,14 @@ const ProductDetail = () => {
             {productDetails.categories}
           </p>
           <div>
-            <StyledSelect defaultValue="1" />
+            <StyledSelect defaultValue="1" value={cartValue} onChange={(e) => { setCartValue(e.target.value); }}>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+
+            </StyledSelect>
 
             <button onClick={() => alert('Clicked')}>Add to Basket</button>
           </div>
