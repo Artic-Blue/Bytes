@@ -7,10 +7,8 @@ const Form = ({ getList, renderCount }) => {
   const [feeling, updateFeeling] = useState('');
   const [thoughts, updateThoughts] = useState('');
   const user = useUser();
-  console.log('useContext -> ', user);
 
   const handleSubmit = (event) => {
-
     event.preventDefault();
 
     const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
@@ -21,7 +19,7 @@ const Form = ({ getList, renderCount }) => {
       .then(() => {
         getList(renderCount);
       })
-      .catch((err) => console.log('Error here in the post : ', err));
+      .catch((err) => console.log('Oh no! There was an error trying to log your feeling :( ', err));
   };
 
   return (

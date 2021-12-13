@@ -10,7 +10,7 @@ const Tracker = () => {
   const getList = (renderAmount) => {
     axios.get(`/tracker/getList/${renderAmount}`)
       .then(({ data }) => setThoughtsList(data))
-      .catch((err) => console.log("didn't get the data with error: ", err));
+      .catch((err) => console.log('Oops! Coould not get the data requested! :( Here is your error: ', err));
   };
 
   return (
@@ -42,12 +42,12 @@ const Tracker = () => {
 const NavBar = styled.div`
   overflow: hidden;
   background-color: #333;
-`
+`;
 
 const Banner = styled.div`
   overflow: hidden;
   background-color: #f3ebc9;
-`
+`;
 
 const TrackerDiv = styled.div`
   background-color: #b6e2ff;
