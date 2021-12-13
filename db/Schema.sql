@@ -37,7 +37,8 @@ CREATE TABLE cart (
   product_id INTEGER NOT NULL,
   cart_quantity INTEGER NOT NULL,
 
-  PRIMARY KEY (cart_id)
+  PRIMARY KEY (cart_id),
+  UNIQUE("user_id", product_id)
 );
 
 DROP TABLE IF EXISTS users CASCADE;
