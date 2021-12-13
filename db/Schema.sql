@@ -32,11 +32,13 @@ CREATE TABLE products (
 DROP TABLE IF EXISTS cart CASCADE;
 
 CREATE TABLE cart (
+  cart_id SERIAL NOT NULL,
   "user_id" INTEGER NOT NULL,
   product_id INTEGER NOT NULL,
   cart_quantity INTEGER NOT NULL,
 
-  PRIMARY KEY ("user_id", product_id)
+  PRIMARY KEY (cart_id),
+  UNIQUE("user_id", product_id)
 );
 
 DROP TABLE IF EXISTS users CASCADE;
