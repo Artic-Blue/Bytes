@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { useUser } from '../../../context/UserContext';
 
 const Form = ({ getList }) => {
   const [feeling, updateFeeling] = useState('');
   const [thoughts, updateThoughts] = useState('');
+  const user = useUser();
+  console.log('useContext -> ', user);
+
+
 
   const handleSubmit = (event) => {
 
     event.preventDefault();
-
-    // (user_id, thought, feeling_id, track_date)
-
-
+    
     const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
 
     axios.post('/tracker/postListItem', {

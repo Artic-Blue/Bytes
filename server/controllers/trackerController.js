@@ -21,7 +21,7 @@ exports.getList = async (req, res) => {
   // SAMPLE QUERY
   console.log('I am here in the get list controller');
   const query = `
-    SELECT * FROM tracker ORDER BY track_date DESC
+    SELECT * FROM tracker ORDER BY tracker_id DESC
   `;
 
   try {
