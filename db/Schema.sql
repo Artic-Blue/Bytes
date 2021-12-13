@@ -24,6 +24,7 @@ CREATE TABLE products (
   stock INTEGER NULL DEFAULT NULL,
   farmer_id INTEGER NULL DEFAULT NULL,
   instructions TEXT NULL DEFAULT NULL,
+  price INTEGER NULL DEFAULT NULL,
 
   PRIMARY KEY (product_id)
 );

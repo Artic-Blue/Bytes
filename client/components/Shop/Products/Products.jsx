@@ -86,7 +86,7 @@ const ProductList = ({ currentCategory }) => {
         {products.map((product) => {
           console.log(product.product_id);
           return (
-            <Col span={6} sm={3} md={3} lg={3} onClick={() => navigate(`/shop/products/${product.product_id}`)}>
+            <Col span={12} sm={3} md={3} lg={3} onClick={() => navigate(`/shop/products/${product.product_id}`)}>
               <p>{product.product_name}</p>
               <PaddedImages src={product.image_url} alt="" />
             </Col>
