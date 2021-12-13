@@ -2,21 +2,26 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
-const Form = () => {
+const Form = ({ getList }) => {
   const [feeling, updateFeeling] = useState('');
   const [thoughts, updateThoughts] = useState('');
 
   const handleSubmit = (event) => {
+
+    event.preventDefault();
+
     // (user_id, thought, feeling_id, track_date)
+
 
     const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
 
     axios.post('/tracker/postListItem', {
       feeling, thoughts, trackDate,
     })
-      .then(() => console.log('succesful post to the DB'))
+      .then(() => {
+        getList();
+      })
       .catch((err) => console.log('Error here in the post : ', err));
-    event.preventDefault();
     console.log('feeling: ', feeling, ' thoughts: ', thoughts);
   };
 
