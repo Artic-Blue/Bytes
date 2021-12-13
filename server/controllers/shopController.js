@@ -33,7 +33,6 @@ exports.GetProductDetails = async (req, res) => {
 };
 
 exports.postCart = async (req, res) => {
-  console.log("post", req.body)
   const { userId, productId, quantity } = req.body;
   const query = `
   INSERT INTO cart(user_id, product_id, cart_quantity) VALUES (${userId}, ${productId}, ${quantity}) ON CONFLICT (user_id, product_id) DO UPDATE SET cart_quantity = cart.cart_quantity + ${quantity}
