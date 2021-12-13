@@ -19,13 +19,14 @@ exports.exampleGet = async (req, res) => {
 
 exports.getList = async (req, res) => {
   // SAMPLE QUERY
-  console.log('I am here in the get list controller');
+  const reqParams = [req.params.renderAmount];
+  console.log(reqParams);
   const query = `
-    SELECT * FROM tracker ORDER BY tracker_id DESC
+    SELECT * FROM tracker ORDER BY tracker_id DESC LIMIT $1
   `;
 
   try {
-    const result = await queryDB(pool, query);
+    const result = await queryDB(pool, query, reqParams);
 
     res.send(result.rows);
   } catch (err) {

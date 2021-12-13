@@ -9,8 +9,8 @@ const Tracker = () => {
     console.log('This works!');
   }, []);
   const [thoughtsList, setThoughtsList] = useState([]);
-  const getList = () => {
-    axios.get('/tracker/getList')
+  const getList = (renderAmount) => {
+    axios.get(`/tracker/getList/${renderAmount}`)
       .then(({ data }) => setThoughtsList(data))
       .catch((err) => console.log("didn't get the data with error: ", err));
   }

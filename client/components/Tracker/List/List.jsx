@@ -7,21 +7,26 @@ import ListItem from './ListItem';
 
 const List = ({ thoughtsList, setThoughtsList, getList }) => {
   const [renderAmount, setRenderAmount] = useState(20);
-
   const [renderCount, setRenderCount] = useState(4);
 
   useEffect(() => {
-    getList();
+    getList(renderAmount);
   }, []);
 
   const setRenderCountHandler = () => {
-    if (renderCount <= thoughtsList.length) {
-      setRenderCount((prevRenderCount) => prevRenderCount + 4);
-    } else if (renderCount >= thoughtsList.length) {
-      setRenderAmount((prevRenderAmount) => prevRenderAmount + 20);
-      setThoughtsList(thoughtsList.concat(dummyData.slice(renderAmount, renderAmount + 20)));
-      setRenderCount((prevRenderCount) => prevRenderCount + 4);
-    }
+    setRenderCount((prevRenderCount) => prevRenderCount + 4);
+    // if (renderCount >= thoughtsList.length) {
+    //   getList();
+    // }
+
+
+    // if (renderCount <= thoughtsList.length) {
+    //   setRenderCount((prevRenderCount) => prevRenderCount + 4);
+    // } else if (renderCount >= thoughtsList.length) {
+    //   setRenderAmount((prevRenderAmount) => prevRenderAmount + 20);
+    //   setThoughtsList(thoughtsList.concat(dummyData.slice(renderAmount, renderAmount + 20)));
+      // setRenderCount((prevRenderCount) => prevRenderCount + 4);
+    // }
   };
 
   return (
@@ -34,3 +39,9 @@ const List = ({ thoughtsList, setThoughtsList, getList }) => {
 };
 
 export default List;
+
+/*
+  once we get a list from the database, initially 20,
+  we would first need to check if we need to render more or not.
+  then we can load more.
+*/
