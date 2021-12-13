@@ -26,12 +26,12 @@ const Tracker = () => {
 
         Banner
       </Banner>
-      <Form getList={() => getList()} />
+      <Form getList={getList} />
 
       <StyledList
         thoughtsList={thoughtsList}
-        getList={() => getList()}
-        setThoughtsList={() => setThoughtsList()}
+        getList={getList}
+        setThoughtsList={setThoughtsList}
       />
     </TrackerDiv>
   );
