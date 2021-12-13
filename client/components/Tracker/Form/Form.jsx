@@ -14,7 +14,7 @@ const Form = ({ getList }) => {
 
   // console.log(props);
   const handleSubmit = (event) => {
-    event.preventDefault();
+    // (user_id, thought, feeling_id, track_date)
 
     const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
 
