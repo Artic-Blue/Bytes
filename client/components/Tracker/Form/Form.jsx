@@ -10,7 +10,9 @@ const Form = ({ getList, renderCount }) => {
   console.log('useContext -> ', user);
 
   const handleSubmit = (event) => {
+
     event.preventDefault();
+
     const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
 
     axios.post('/tracker/postListItem', {
