@@ -23,6 +23,8 @@ CREATE TABLE products (
   ingredients_url VARCHAR(255) NULL DEFAULT NULL,
   stock INTEGER NULL DEFAULT NULL,
   farmer_id INTEGER NULL DEFAULT NULL,
+  instructions TEXT NULL DEFAULT NULL,
+  price INTEGER NULL DEFAULT NULL,
 
   PRIMARY KEY (product_id)
 );
@@ -35,20 +37,20 @@ CREATE TABLE cart (
   product_id INTEGER NOT NULL,
   cart_quantity INTEGER NOT NULL,
 
-  PRIMARY KEY (cart_id)
+  PRIMARY KEY (cart_id),
+  UNIQUE("user_id", product_id)
 );
 
-DROP TABLE IF EXISTS "user" CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 
-CREATE TABLE "user" (
-  "user_id" SERIAL NOT NULL,
-  "user_name" VARCHAR(255) NULL DEFAULT NULL,
-  pass_key VARCHAR(255) NULL DEFAULT NULL,
-  email VARCHAR(255) NULL DEFAULT NULL,
+CREATE TABLE users (
+  user_id SERIAL NOT NULL,
   first_name VARCHAR(255) NULL DEFAULT NULL,
   last_name VARCHAR(255) NULL DEFAULT NULL,
+  email VARCHAR(255) NULL DEFAULT NULL,
+  password VARCHAR(255) NULL DEFAULT NULL,
 
-  PRIMARY KEY ("user_id")
+  PRIMARY KEY (user_id)
 );
 
 DROP TABLE IF EXISTS farmer CASCADE;

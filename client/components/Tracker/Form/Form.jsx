@@ -7,7 +7,11 @@ const Form = ({ getList }) => {
   const [thoughts, updateThoughts] = useState('');
 
   const handleSubmit = (event) => {
+
     event.preventDefault();
+
+    // (user_id, thought, feeling_id, track_date)
+
 
     const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
 
