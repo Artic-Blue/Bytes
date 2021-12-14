@@ -1,27 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { useUser } from '../../../context/UserContext';
 
-const Form = ({ getList, renderCount }) => {
+const Form = ({ getList, renderCount, user }) => {
   const [feeling, updateFeeling] = useState('');
   const [thoughts, updateThoughts] = useState('');
-  const user = useUser();
-  console.log('useContext -> ', user);
 
   const handleSubmit = (event) => {
-
     event.preventDefault();
 
     const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
 
     axios.post('/tracker/postListItem', {
-      feeling, thoughts, trackDate,
+      feeling, thoughts, trackDate, user,
     })
       .then(() => {
         getList(renderCount);
       })
-      .catch((err) => console.log('Error here in the post : ', err));
+      .catch((err) => console.log('Oh no! There was an error trying to log your feeling :( ', err));
   };
 
   return (
