@@ -18,7 +18,7 @@ const List = ({ thoughtsList, getList, renderCount, setRenderCount, }) => {
       {thoughtsList.filter((item) => thoughtsList.indexOf(item) < renderCount - 1).map((item) => <ListItem item={item} />)}
       {
         renderCount > thoughtsList.length ? null
-          : <button onClick={() => setRenderCountHandler()}>Load More</button>
+          : <button onClick={setRenderCountHandler}>Load More</button>
       }
     </>
   );

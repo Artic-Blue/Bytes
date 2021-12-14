@@ -4,20 +4,23 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Grid, Col } from '@mantine/core';
+import Sidebar from './Sidebar.jsx';
+import Banner from './Banner.jsx';
+import SearchBar from './SearchBar.jsx';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const ProductList = ({ currentCategory }) => {
+const ProductList = () => {
   const [products, setProducts] = useState([]);
-
+  const [category, setCategory] = useState('Meal');
   const getProducts = () => {
-    axios.get('http://localhost:3000/shop/products')
+    axios.get(`http://localhost:3000/shop/products/${category}`)
       .then((result) => {
         console.log('success');
         setProducts(result.data);
       })
       .catch((err) => console.log(err));
   };
-  useEffect(getProducts, []);
+  useEffect(getProducts, [category]);
 
   const ExampleStyledComponent = styled.div`
   align-items: center;
@@ -39,7 +42,7 @@ const ProductList = ({ currentCategory }) => {
     justify-content: start;
   }
 `;
-
+  // look into adding hover
   const PaddedImages = styled.img`
     height: 100px;
     width: 160px;
@@ -74,26 +77,51 @@ const ProductList = ({ currentCategory }) => {
   // }
   // `;
 
+  const FlexBoxContainer = styled.div`
+    display: flex;
+    width: 95vw;
+    position: relative;
+  `;
+
+  const SidebarContainer = styled.div`
+    display: flex;
+    width: 20%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+  `;
+  const SearchAndProductsContainer = styled.div`
+    display: flex;
+    width: 80%;
+    height: 100%;
+    flex-direction: column;
+  `;
+
   const navigate = useNavigate();
 
   return (
     <Div>
-      <h2>Products</h2>
-      The current category is:
-      {' '}
-      {currentCategory}
-      <Grid>
-        {products.map((product) => {
-          console.log(product.product_id);
-          return (
-            <Col span={12} sm={3} md={3} lg={3} onClick={() => navigate(`/shop/products/${product.product_id}`)}>
-              <p>{product.product_name}</p>
-              <PaddedImages src={product.image_url} alt="" />
-            </Col>
+      <Banner category={category} />
+      <FlexBoxContainer>
+        <SidebarContainer>
+          <Sidebar setCategory={setCategory} category={category} />
+        </SidebarContainer>
+        <SearchAndProductsContainer>
+          <SearchBar setCategory={setCategory} />
+          Showing:
+          {' '}
+          {category === 'Meal' ? 'Meals' : category}
+          <Grid>
+            {products.map((product) => (
+              <Col span={6} sm={3} md={3} lg={3} onClick={() => navigate(`/shop/products/${product.product_id}`)}>
+                <p>{product.product_name}</p>
+                <PaddedImages src={product.image_url} alt="" />
+              </Col>
+            ))}
+          </Grid>
+        </SearchAndProductsContainer>
 
-          );
-        })}
-      </Grid>
+      </FlexBoxContainer>
 
     </Div>
   );

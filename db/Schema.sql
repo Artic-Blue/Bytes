@@ -53,14 +53,13 @@ CREATE TABLE users (
   PRIMARY KEY (user_id)
 );
 
-DROP TABLE IF EXISTS farmer CASCADE;
+DROP TABLE IF EXISTS farmers CASCADE;
 
-CREATE TABLE farmer (
+CREATE TABLE farmers (
   farmer_id INTEGER NOT NULL,
   farmer_name VARCHAR(255) NULL DEFAULT NULL,
   farmer_story TEXT NULL DEFAULT NULL,
   farmer_url VARCHAR(255) NULL DEFAULT NULL,
-  logo_url VARCHAR(255) NULL DEFAULT NULL,
 
   PRIMARY KEY (farmer_id)
 );

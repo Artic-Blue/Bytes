@@ -2,9 +2,9 @@ const queryDB = require('../../db/queryDB');
 const pool = require('../../db/index');
 
 exports.getProducts = async (req, res) => {
-  // SAMPLE QUERY
+  const { category } = req.params;
   const query = `
-    SELECT * FROM products WHERE categories = 'Meal'
+    SELECT * FROM products WHERE categories LIKE '%${category}%'
   `;
 
   try {
