@@ -5,20 +5,14 @@ import styled from 'styled-components';
 import dummyData from './dummy_data';
 import ListItem from './ListItem';
 
-const List = () => {
+const List = ({ thoughtsList, setThoughtsList, getList }) => {
   const [renderAmount, setRenderAmount] = useState(20);
-  const [thoughtsList, setThoughtsList] = useState([]);
+
   const [renderCount, setRenderCount] = useState(4);
 
   useEffect(() => {
-    axios.get('/tracker/getList')
-      .then(({data}) => setThoughtsList(data))
-      .catch((err) => console.log("didn't get the data with error: ", err));
+    getList();
   }, []);
-
-  // useEffect(() => {
-  //   setThoughtsList(dummyData.slice(0, renderAmount));
-  // }, []);
 
   const setRenderCountHandler = () => {
     if (renderCount <= thoughtsList.length) {
