@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 const Sidebar = ({ setCategory }) => {
   const sidebarCategories = [
-    'Meal',
+    'Meals',
     'Produce',
     'Frozen',
     'Canned',
@@ -11,18 +11,18 @@ const Sidebar = ({ setCategory }) => {
     'Dairy & Eggs',
   ];
 
-  // ['Beverages', 'Canned Food', 'Fruits', 'Vegetables', ]
-
   const handleSidebarClick = (event) => {
-    setCategory(event.target.value);
-    // axios.get(`http://localhost:3000/shop/products/`)
+    if (event.target.value === 'Meals') {
+      setCategory('Meal');
+    } else {
+      setCategory(event.target.value);
+    }
   };
 
   return (
     sidebarCategories.map((item) => (
 
       <button value={item} onClick={handleSidebarClick}>{item}</button>
-
     ))
   );
 };

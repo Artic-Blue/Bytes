@@ -81,8 +81,8 @@ const ProductList = () => {
 
   return (
     <Div>
-      <Banner />
-      <SearchBar />
+      <Banner category={category} />
+      <SearchBar setCategory={setCategory} />
       <Sidebar setCategory={setCategory} />
       <h2>Products</h2>
       The current category is:
