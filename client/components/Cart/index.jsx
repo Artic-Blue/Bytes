@@ -1,14 +1,16 @@
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+// import { useUser } from '../../context/UserContext';
 
 const Cart = () => {
+  // const user = useUser();
+  // const user = 1;
   const [cartItems, setCartItems] = useState([]);
 
-  const getCart = () => {
-    axios.get('/shop/products/34')
+  const fakeCart = () => {
+    axios.get('/shop/products/24')
       .then((data) => {
-        // console.log('The result of Cart get request: ', data.data[0]);
         if (data) {
           setCartItems([{
             product_name: data.data[0].product_name,
@@ -18,11 +20,27 @@ const Cart = () => {
         }
       })
       .catch((err) => {
-        console.log('Cart get request failed: ', err);
+        console.log('fakeCart request failed: ', err);
       });
   };
 
-  useEffect(getCart, []);
+  const getCart = () => {
+    axios.get('/cart')
+      .then((data) => {
+        if (data) {
+          console.log('Here is what getCart returned: ', data.data);
+        }
+      })
+      .catch((err) => {
+        console.log('getCart request failed: ', err);
+      });
+  };
+
+  useEffect(() => {
+    fakeCart();
+    getCart();
+  }, []);
+  // useEffect(getCart, []);
 
   const cartItemsAsListElements = cartItems.map((item) => (
     <li>
