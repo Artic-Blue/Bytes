@@ -56,7 +56,6 @@ const TrackerDiv = styled.div`
   display: grid;
   overflow: auto;
   padding: 10px;
-  font-family: 'Josefin Sans', sans-serif;
 
 `;
 

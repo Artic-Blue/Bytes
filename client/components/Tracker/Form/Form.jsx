@@ -130,7 +130,6 @@ const ThoughtInput = styled.input.attrs((props) => ({
 `;
 
 const FeelingsContainer = styled.div`
-font-family: 'Josefin Sans', sans-serif;
 padding: '50px';
 /* background-color: teal; */
 max-height: '50px';
@@ -143,7 +142,6 @@ const ThoughtsContainer = styled.div`
 /* background-color: pink; */
 /* justify-content: space-between; */
 grid-column-start: col-start 2;
-font-family: 'Josefin Sans', sans-serif;
 height: '50px';
 width: '100px';
 
@@ -151,8 +149,6 @@ width: '100px';
 
 const FormContainer = styled.div`
 grid-column-start: col-start 1;
-font-family: 'Josefin Sans', sans-serif;
-
 display: grid;
 `;
 
