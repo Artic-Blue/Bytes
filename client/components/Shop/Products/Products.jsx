@@ -4,20 +4,23 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Grid, Col } from '@mantine/core';
+import Sidebar from './Sidebar.jsx';
+import Banner from './Banner.jsx';
+import SearchBar from './SearchBar.jsx';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const ProductList = ({ currentCategory }) => {
+const ProductList = () => {
   const [products, setProducts] = useState([]);
-
+  const [category, setCategory] = useState('Meal');
   const getProducts = () => {
-    axios.get('http://localhost:3000/shop/products')
+    axios.get(`http://localhost:3000/shop/products/${category}`)
       .then((result) => {
         console.log('success');
         setProducts(result.data);
       })
       .catch((err) => console.log(err));
   };
-  useEffect(getProducts, []);
+  useEffect(getProducts, [category]);
 
   const ExampleStyledComponent = styled.div`
   align-items: center;
@@ -78,21 +81,21 @@ const ProductList = ({ currentCategory }) => {
 
   return (
     <Div>
+      <Banner />
+      <SearchBar />
+      <Sidebar setCategory={setCategory} />
       <h2>Products</h2>
       The current category is:
       {' '}
-      {currentCategory}
+      {category}
       <Grid>
-        {products.map((product) => {
-          console.log(product.product_id);
-          return (
-            <Col span={12} sm={3} md={3} lg={3} onClick={() => navigate(`/shop/products/${product.product_id}`)}>
-              <p>{product.product_name}</p>
-              <PaddedImages src={product.image_url} alt="" />
-            </Col>
+        {products.map((product) => (
+          <Col span={6} sm={3} md={3} lg={3} onClick={() => navigate(`/shop/products/${product.product_id}`)}>
+            <p>{product.product_name}</p>
+            <PaddedImages src={product.image_url} alt="" />
+          </Col>
 
-          );
-        })}
+        ))}
       </Grid>
 
     </Div>
