@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import { useUser } from '../../context/UserContext';
-import Container from './Cart.styled';
+import { ListContainer, ItemContainer, SubItemContainer } from './Cart.styled';
 
 const Cart = () => {
   // const user = useUser();
@@ -30,45 +30,49 @@ const Cart = () => {
 
   const cartItemsAsListElements = cartItems.map((item) => (
     <li>
-      <Container>
-        <div>
-          {item.product_name}
-        </div>
-        <div>
-          Size--
-          {'  '}
-          {item.quantity}
-        </div>
-        <div>
-          Quantity of This Item in Your Cart--
-          {'  '}
-          {item.cart_quantity}
-        </div>
-        <div>
-          Price for Each--
-          {'  '}
-          $
-          {item.price}
-          .00
-        </div>
-        <div>
-          Total Price for This Item--
-          {'  '}
-          $
-          {parseInt(item.cart_quantity, 10) * parseInt(item.price, 10)}
-          .00
-        </div>
+      <ItemContainer>
+        <SubItemContainer>
+          <div>
+            {item.product_name}
+          </div>
+          <div>
+            Size--
+            {'  '}
+            {item.quantity}
+          </div>
+        </SubItemContainer>
+        <SubItemContainer>
+          <div>
+            Quantity of This Item in Your Cart--
+            {'  '}
+            {item.cart_quantity}
+          </div>
+          <div>
+            Price for Each--
+            {'  '}
+            $
+            {item.price}
+            .00
+          </div>
+          <div>
+            Total Price for This Item--
+            {'  '}
+            $
+            {parseInt(item.cart_quantity, 10) * parseInt(item.price, 10)}
+            .00
+          </div>
+        </SubItemContainer>
         <div>
           <img src={item.image_url} alt="None" />
         </div>
-      </Container>
+      </ItemContainer>
     </li>
   ));
 
   return (
-    <Container>
+    <ListContainer>
       <div>
-        <h2>Your Cart --</h2>
+        <h2>Your Cart</h2>
         <ul>
           {cartItemsAsListElements}
         </ul>
@@ -77,7 +81,7 @@ const Cart = () => {
         </form>
 
       </div>
-    </Container>
+    </ListContainer>
   );
 };
 
