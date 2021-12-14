@@ -16,18 +16,18 @@ const Tracker = () => {
       .catch((err) => console.log('Oops! Coould not get the data requested! :( Here is your error: ', err));
   };
 
-
   return (
     <TrackerDiv>
-      <NavBar>
-        Hello
 
-      </NavBar>
 
-      <Banner>
+      <StyledBanner>
+        <StyledImage>
+          <img src="https://fastcdn.impakter.com/wp-content/uploads/2018/09/lifestyle.jpg?strip=all&lossy=1&quality=92&ssl=1" alt="health lady basking in the glory that is life" style={{ width: '750px'
+        }} />
 
-        Banner
-      </Banner>
+        </StyledImage>
+
+      </StyledBanner>
       <Form
         getList={getList}
         renderCount={renderCount}
@@ -44,21 +44,24 @@ const Tracker = () => {
   );
 };
 
-const NavBar = styled.div`
-  overflow: hidden;
-  background-color: #333;
-`;
 
-const Banner = styled.div`
+const StyledBanner = styled.div`
   overflow: hidden;
-  background-color: #f3ebc9;
+  max-height: 300px;
+  max-width: 1000px;
+
 `;
 
 const TrackerDiv = styled.div`
-  background-color: #b6e2ff;
   display: grid;
   overflow: auto;
   padding: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+
+`;
+
+const StyledImage = styled.div`
+margin-bottom: 50px;
 `;
 
 const StyledList = styled(List)`
