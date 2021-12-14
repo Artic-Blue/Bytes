@@ -8,8 +8,8 @@ const Sidebar = ({ setCategory, category }) => {
     'Produce',
     'Frozen',
     'Canned',
-    'Dry Goods & Pasta',
-    'Dairy & Eggs',
+    'Dry Goods',
+    'Dairy',
   ];
 
   const handleSidebarClick = (event) => {
@@ -23,13 +23,17 @@ const Sidebar = ({ setCategory, category }) => {
   };
 
   const SidebarItem = styled.p`
+    margin: 2vh;
     textAlign: left;
     cursor: pointer;
+    font-size: 1.2em;
   `;
 
   const SelectedSidebarItem = styled.p`
+    margin: 2vh;
     textAlign: left;
     font-weight: bold;
+    font-size: 1.2em;
     `;
 
   return (

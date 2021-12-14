@@ -23,27 +23,6 @@ const ProductList = () => {
   };
   useEffect(getProducts, [category]);
 
-  const ExampleStyledComponent = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 50px;
-  width: calc(100% - 20px);
-
-  img {
-    height: 100px;
-    width: 100px;
-    object-fit: cover;
-  }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    color: blue;
-    justify-content: start;
-  }
-`;
-
   // from loungeo
   const Div = styled.div`
   height: 95vh;
@@ -65,7 +44,6 @@ const ProductList = () => {
     height: 100%;
     flex-direction: column;
     align-items: flex-start;
-    border: 1px solid orange
   `;
   const SearchAndProductsContainer = styled.div`
     display: flex;
@@ -80,9 +58,9 @@ const ProductList = () => {
       <FlexBoxContainer>
         <SidebarContainer>
           <Sidebar setCategory={setCategory} category={category} />
+          <SearchBar setCategory={setCategory} />
         </SidebarContainer>
         <SearchAndProductsContainer>
-          <SearchBar setCategory={setCategory} />
           Showing:
           {' '}
           {category === 'Meal' ? 'Meals' : category}
