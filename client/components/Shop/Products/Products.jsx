@@ -61,9 +61,6 @@ const ProductList = () => {
           <SearchBar setCategory={setCategory} />
         </SidebarContainer>
         <SearchAndProductsContainer>
-          Showing:
-          {' '}
-          {category === 'Meal' ? 'Meals' : category}
           <SimpleGrid cols={4} spacing="xl">
             <ProductGrid products={products} />
           </SimpleGrid>

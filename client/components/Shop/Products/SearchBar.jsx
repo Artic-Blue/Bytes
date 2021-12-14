@@ -6,11 +6,11 @@ import styled from 'styled-components';
 const SearchButton = styled.input`
   border: none;
   color: white;
-  background: #262730;
+  background: #ffe5b4;
   height: 1.5vw;
   cursor: pointer;
   &:hover {
-    background: #7D8491;
+    background: #ffa500;
   }`;
 
 const SearchBar = ({ setCategory }) => {
