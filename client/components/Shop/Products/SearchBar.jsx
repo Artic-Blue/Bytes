@@ -1,10 +1,21 @@
 // client/components/Shop/Sidebar.jsx
-import React from 'react';
+// client/components/Shop/Sidebar.jsx
+import React, { useState } from 'react';
 
-const SearchBar = () => (
-  <div>
-    <h2>Search Bar Here</h2>
-  </div>
-);
+const SearchBar = ({ setCategory }) => {
+  const [text, setText] = useState('');
+
+  return (
+    <form onSubmit={() => setCategory(text)}>
+      <input
+        type="text"
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
+      />
+      <input type="submit" text="Search" />
+    </form>
+  );
+};
 
 export default SearchBar;
