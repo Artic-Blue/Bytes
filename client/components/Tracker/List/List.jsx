@@ -1,10 +1,26 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable max-len */
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import ListItem from './ListItem';
 
-const List = () => {
-  const [thoughtsList, updateThoughtsList] = useState([]);
+const List = ({ thoughtsList, getList, renderCount, setRenderCount, }) => {
+  useEffect(() => {
+    getList(renderCount);
+  }, [renderCount]);
+
+  const setRenderCountHandler = () => {
+    setRenderCount(renderCount + 4);
+  };
+
   return (
-    <h2>List</h2>
+    <>
+      <h2>Hello there! Penny for your thoughs?</h2>
+      {thoughtsList.filter((item) => thoughtsList.indexOf(item) < renderCount - 1).map((item) => <ListItem item={item} />)}
+      {
+        renderCount > thoughtsList.length ? null
+          : <button onClick={setRenderCountHandler}>Load More</button>
+      }
+    </>
   );
 };
 

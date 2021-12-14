@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 
-const Form = () => {
+const Form = ({ getList, renderCount, user }) => {
   const [feeling, updateFeeling] = useState('');
   const [thoughts, updateThoughts] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('feeling: ', feeling, ' thoughts: ', thoughts);
+
+    const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
+
+    axios.post('/tracker/postListItem', {
+      feeling, thoughts, trackDate, user,
+    })
+      .then(() => {
+        getList(renderCount);
+      })
+      .catch((err) => console.log('Oh no! There was an error trying to log your feeling :( ', err));
   };
 
   return (
