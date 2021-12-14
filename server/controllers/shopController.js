@@ -4,12 +4,12 @@ const pool = require('../../db/index');
 exports.getProducts = async (req, res) => {
   const { category } = req.params;
   const query = `
-    SELECT * FROM products WHERE categories LIKE '%${category}%'
+    SELECT products.product_id AS key_product_id, * FROM products LEFT JOIN farmers ON products.farmer_id = farmers.farmer_id LEFT JOIN cart ON products.product_id = cart.product_id WHERE categories LIKE '%${category}%'
   `;
 
   try {
     const result = await queryDB(pool, query);
-
+    console.log('server', result.rows);
     res.send(result.rows);
   } catch (err) {
     console.log('Error: ', err.message);

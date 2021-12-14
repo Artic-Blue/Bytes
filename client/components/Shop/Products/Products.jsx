@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Grid, Col } from '@mantine/core';
+import { SimpleGrid, Col } from '@mantine/core';
 import Sidebar from './Sidebar.jsx';
 import Banner from './Banner.jsx';
 import SearchBar from './SearchBar.jsx';
+import ProductGrid from './ProductGrid.jsx';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ProductList = () => {
@@ -42,12 +43,7 @@ const ProductList = () => {
     justify-content: start;
   }
 `;
-  // look into adding hover
-  const PaddedImages = styled.img`
-    height: 100px;
-    width: 160px;
-    object-fit: cover;
-`;
+
   // from loungeo
   const Div = styled.div`
   height: 95vh;
@@ -85,19 +81,17 @@ const ProductList = () => {
 
   const SidebarContainer = styled.div`
     display: flex;
-    width: 20%;
+    width: 15%;
     height: 100%;
     flex-direction: column;
     justify-content: flex-start;
   `;
   const SearchAndProductsContainer = styled.div`
     display: flex;
-    width: 80%;
+    width: 85%;
     height: 100%;
     flex-direction: column;
   `;
-
-  const navigate = useNavigate();
 
   return (
     <Div>
@@ -111,14 +105,9 @@ const ProductList = () => {
           Showing:
           {' '}
           {category === 'Meal' ? 'Meals' : category}
-          <Grid>
-            {products.map((product) => (
-              <Col span={6} sm={3} md={3} lg={3} onClick={() => navigate(`/shop/products/${product.product_id}`)}>
-                <p>{product.product_name}</p>
-                <PaddedImages src={product.image_url} alt="" />
-              </Col>
-            ))}
-          </Grid>
+          <SimpleGrid cols={4} spacing="xl">
+            <ProductGrid products={products} />
+          </SimpleGrid>
         </SearchAndProductsContainer>
 
       </FlexBoxContainer>
