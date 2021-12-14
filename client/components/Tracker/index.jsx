@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Form from './Form/Form';
 import List from './List/List';
 
 const Tracker = () => {
-  useEffect(() => {
-    console.log('This works!');
-  }, []);
   const [thoughtsList, setThoughtsList] = useState([]);
-  const getList = () => {
-    axios.get('/tracker/getList')
+  const [renderCount, setRenderCount] = useState(5);
+  const getList = (renderAmount) => {
+    axios.get(`/tracker/getList/${renderAmount}`)
       .then(({ data }) => setThoughtsList(data))
       .catch((err) => console.log("didn't get the data with error: ", err));
-  }
+  };
 
   return (
     <TrackerDiv>
@@ -26,13 +24,16 @@ const Tracker = () => {
 
         Banner
       </Banner>
-    
-      <Form getList={getList} />
+      <Form
+        getList={getList}
+        renderCount={renderCount}
+      />
 
       <StyledList
         thoughtsList={thoughtsList}
         getList={getList}
-        setThoughtsList={setThoughtsList}
+        renderCount={renderCount}
+        setRenderCount={setRenderCount}
       />
     </TrackerDiv>
   );

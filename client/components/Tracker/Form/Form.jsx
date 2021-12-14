@@ -3,28 +3,25 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { useUser } from '../../../context/UserContext';
 
-const Form = ({ getList }) => {
+const Form = ({ getList, renderCount }) => {
   const [feeling, updateFeeling] = useState('');
   const [thoughts, updateThoughts] = useState('');
   const user = useUser();
   console.log('useContext -> ', user);
 
-
-
   const handleSubmit = (event) => {
 
     event.preventDefault();
-    
+
     const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
 
     axios.post('/tracker/postListItem', {
       feeling, thoughts, trackDate,
     })
       .then(() => {
-        getList();
+        getList(renderCount);
       })
       .catch((err) => console.log('Error here in the post : ', err));
-    console.log('feeling: ', feeling, ' thoughts: ', thoughts);
   };
 
   return (
