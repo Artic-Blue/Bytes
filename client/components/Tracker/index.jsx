@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Form from './Form/Form';
 import List from './List/List';
+import { useUser } from '../../context/UserContext';
 
 const Tracker = () => {
-  useEffect(() => {
-    console.log('This works!');
-  }, []);
   const [thoughtsList, setThoughtsList] = useState([]);
-  const getList = () => {
-    axios.get('/tracker/getList')
+  const [renderCount, setRenderCount] = useState(5);
+  const user = useUser();
+
+  const getList = (renderAmount) => {
+    axios.get(`/tracker/getList/${renderAmount}/${user}`)
       .then(({ data }) => setThoughtsList(data))
-      .catch((err) => console.log("didn't get the data with error: ", err));
-  }
+      .catch((err) => console.log('Oops! Coould not get the data requested! :( Here is your error: ', err));
+  };
+
 
   return (
     <TrackerDiv>
@@ -26,12 +28,17 @@ const Tracker = () => {
 
         Banner
       </Banner>
-      <Form getList={() => getList()} />
+      <Form
+        getList={getList}
+        renderCount={renderCount}
+        user={user}
+      />
 
       <StyledList
         thoughtsList={thoughtsList}
-        getList={() => getList()}
-        setThoughtsList={() => setThoughtsList()}
+        getList={getList}
+        renderCount={renderCount}
+        setRenderCount={setRenderCount}
       />
     </TrackerDiv>
   );
@@ -40,12 +47,12 @@ const Tracker = () => {
 const NavBar = styled.div`
   overflow: hidden;
   background-color: #333;
-`
+`;
 
 const Banner = styled.div`
   overflow: hidden;
   background-color: #f3ebc9;
-`
+`;
 
 const TrackerDiv = styled.div`
   background-color: #b6e2ff;

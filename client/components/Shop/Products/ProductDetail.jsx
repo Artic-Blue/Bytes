@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Select from 'react-dropdown-select';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
@@ -11,7 +11,7 @@ const ProductDetail = () => {
   const [cartValue, setCartValue] = useState(1);
 
   const getProductDetails = () => {
-    axios.get(`http://localhost:3000/shop/products/${params.productId}`)
+    axios.get(`http://localhost:3000/shop/product/${params.productId}`)
       .then((result) => {
         console.log(result.data[0]);
         setProductDetails(result.data[0]);

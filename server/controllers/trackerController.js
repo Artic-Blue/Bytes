@@ -3,7 +3,6 @@ const pool = require('../../db/index');
 
 exports.exampleGet = async (req, res) => {
   // SAMPLE QUERY
-  // console.log('I am here in the controller');
   const query = `
     SELECT * FROM products LIMIT 10
   `;
@@ -18,14 +17,13 @@ exports.exampleGet = async (req, res) => {
 };
 
 exports.getList = async (req, res) => {
-  // SAMPLE QUERY
-  console.log('I am here in the get list controller');
+  const reqParams = [req.params.user, req.params.renderAmount];
   const query = `
-    SELECT * FROM tracker ORDER BY track_date DESC
+    SELECT * FROM tracker WHERE user_id=$1 ORDER BY tracker_id DESC LIMIT $2
   `;
 
   try {
-    const result = await queryDB(pool, query);
+    const result = await queryDB(pool, query, reqParams);
 
     res.send(result.rows);
   } catch (err) {
@@ -34,12 +32,9 @@ exports.getList = async (req, res) => {
 };
 
 exports.postListItem = async (req, res) => {
-  // SAMPLE QUERY
-  const reqParams = [req.body.thoughts, req.body.feeling, req.body.trackDate];
-  console.log(reqParams);
-  console.log('I am here in the post list item controller');
+  const reqParams = [req.body.user, req.body.thoughts, req.body.feeling, req.body.trackDate];
   const query = `
-    INSERT INTO tracker (user_id, thought, feeling_id, track_date) VALUES (2, $1, $2, $3)
+    INSERT INTO tracker (user_id, thought, feeling_id, track_date) VALUES ($1, $2, $3, $4)
   `;
 
   try {
