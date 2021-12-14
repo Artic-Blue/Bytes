@@ -1,13 +1,9 @@
 /* eslint-disable max-len */
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import dummyData from './dummy_data';
 import ListItem from './ListItem';
 
-const List = ({ thoughtsList, getList, renderCount, setRenderCount }) => {
-
-
+const List = ({ thoughtsList, getList, renderCount, setRenderCount, }) => {
   useEffect(() => {
     getList(renderCount);
   }, [renderCount]);
@@ -18,7 +14,7 @@ const List = ({ thoughtsList, getList, renderCount, setRenderCount }) => {
 
   return (
     <>
-      <h2>List</h2>
+      <h2>Hello there! Penny for your thoughs?</h2>
       {thoughtsList.filter((item) => thoughtsList.indexOf(item) < renderCount - 1).map((item) => <ListItem item={item} />)}
       {
         renderCount > thoughtsList.length ? null

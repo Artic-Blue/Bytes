@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { useUser } from '../../../context/UserContext';
 
-const Form = ({ getList, renderCount }) => {
+const Form = ({ getList, renderCount, user }) => {
   const [feeling, updateFeeling] = useState('');
   const [thoughts, updateThoughts] = useState('');
-  const user = useUser();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -14,7 +12,7 @@ const Form = ({ getList, renderCount }) => {
     const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
 
     axios.post('/tracker/postListItem', {
-      feeling, thoughts, trackDate,
+      feeling, thoughts, trackDate, user,
     })
       .then(() => {
         getList(renderCount);
