@@ -1,13 +1,61 @@
 /* eslint-disable no-alert */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+// import { useUser } from '../../context/UserContext';
 
 const Cart = () => {
-  const cartItems = [
-    'Milk',
-    'Strawberries',
-    'Avocados',
-  ];
-  const cartItemsAsListElements = cartItems.map((item) => <li>{item}</li>);
+  // const user = useUser();
+  // const user = 1;
+  const [cartItems, setCartItems] = useState([]);
+
+  const getCart = () => {
+    axios.get('/cart')
+      .then((data) => {
+        if (data) {
+          setCartItems(data.data);
+        }
+      })
+      .catch((err) => {
+        console.log('getCart request failed: ', err);
+      });
+  };
+
+  useEffect(getCart, []);
+
+  const cartItemsAsListElements = cartItems.map((item) => (
+    <li>
+      <div>
+        {item.product_name}
+      </div>
+      <div>
+        Size--
+        {'  '}
+        {item.quantity}
+      </div>
+      <div>
+        Quantity of This Item in Your Cart--
+        {'  '}
+        {item.cart_quantity}
+      </div>
+      <div>
+        Price for Each--
+        {'  '}
+        $
+        {item.price}
+        .00
+      </div>
+      <div>
+        Total Price for This Item--
+        {'  '}
+        $
+        {parseInt(item.cart_quantity, 10) * parseInt(item.price, 10)}
+        .00
+      </div>
+      <div>
+        <img src={item.image_url} alt="None" />
+      </div>
+    </li>
+  ));
 
   function checkOut(e) {
     e.preventDefault();
@@ -16,8 +64,7 @@ const Cart = () => {
 
   return (
     <div>
-      <h2>Cart</h2>
-      <h2>These are the items in your cart-- </h2>
+      <h2>Your Cart --</h2>
       <ul>
         {cartItemsAsListElements}
       </ul>
