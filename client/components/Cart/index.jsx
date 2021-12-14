@@ -8,27 +8,28 @@ const Cart = () => {
   // const user = 1;
   const [cartItems, setCartItems] = useState([]);
 
-  const fakeCart = () => {
-    axios.get('/shop/products/24')
-      .then((data) => {
-        if (data) {
-          setCartItems([{
-            product_name: data.data[0].product_name,
-            image_url: data.data[0].image_url,
-            price: data.data[0].price,
-          }]);
-        }
-      })
-      .catch((err) => {
-        console.log('fakeCart request failed: ', err);
-      });
-  };
+  // const fakeCart = () => {
+  //   axios.get('/shop/products/24')
+  //     .then((data) => {
+  //       if (data) {
+  //         setCartItems([{
+  //           product_name: data.data[0].product_name,
+  //           image_url: data.data[0].image_url,
+  //           price: data.data[0].price,
+  //         }]);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log('fakeCart request failed: ', err);
+  //     });
+  // };
 
   const getCart = () => {
     axios.get('/cart')
       .then((data) => {
         if (data) {
-          console.log('Here is what getCart returned: ', data.data);
+          // console.log('Here is what getCart returned: ', data.data);
+          setCartItems(data.data);
         }
       })
       .catch((err) => {
@@ -37,7 +38,7 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    fakeCart();
+    // fakeCart();
     getCart();
   }, []);
   // useEffect(getCart, []);
@@ -48,12 +49,31 @@ const Cart = () => {
         {item.product_name}
       </div>
       <div>
-        <img src={item.image_url} alt="None" />
+        Size--
+        {'  '}
+        {item.quantity}
       </div>
       <div>
-        {' '}
+        Quantity of This Item in Your Cart--
+        {'  '}
+        {item.cart_quantity}
+      </div>
+      <div>
+        Price for Each--
+        {'  '}
         $
         {item.price}
+        .00
+      </div>
+      <div>
+        Total Price for This Item--
+        {'  '}
+        $
+        {parseInt(item.cart_quantity, 10) * parseInt(item.price, 10)}
+        .00
+      </div>
+      <div>
+        <img src={item.image_url} alt="None" />
       </div>
     </li>
   ));
@@ -65,8 +85,8 @@ const Cart = () => {
 
   return (
     <div>
-      <h2>Cart</h2>
-      <h2>These are the items in your cart-- </h2>
+      <h2>Your Cart --</h2>
+      {/* <h2>These are the items in your cart-- </h2> */}
       <ul>
         {cartItemsAsListElements}
       </ul>
