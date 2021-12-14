@@ -45,6 +45,22 @@ flex-direction: row;
 justify-content: space-between;
 `;
 
+const CartButton = styled.button`
+  right: -.8vw;
+  top: -.8vh;
+  position: absolute;
+  font-size: 1rem;
+  border: none;
+  color: white;
+  background: #262730;
+  width: 2vw;
+  height: 1.5vw;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover {
+    background: #7D8491;
+  }`;
+
 const ProductGrid = ({ products }) => {
   const navigate = useNavigate();
   return (
@@ -68,6 +84,9 @@ const ProductGrid = ({ products }) => {
               .99
             </span>
           </PriceSpan>
+          <CartButton>
+            +
+          </CartButton>
         </GridFlex>
       </Col>
     )));
