@@ -52,16 +52,16 @@ const GlobalStyle = createGlobalStyle`
 
   /* STYLING STARTS HERE */
 
+  *, body {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+  }
+
   #root {
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-
-    > * {
-      // width: 100%;
-      // max-width: 1400px;
-    }
   }
 `;
 
