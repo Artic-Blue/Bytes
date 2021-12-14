@@ -8,13 +8,15 @@ const List = ({ thoughtsList, getList, renderCount, setRenderCount, }) => {
     getList(renderCount);
   }, [renderCount]);
 
+  const dayOfTheWeek = new Date().toLocaleDateString('en-us', { weekday: 'long' }); console.log(dayOfTheWeek);
+
   const setRenderCountHandler = () => {
     setRenderCount(renderCount + 4);
   };
 
   return (
     <>
-      <h2>Hello there! Penny for your thoughs?</h2>
+      <h2>Hello it's {dayOfTheWeek}, Penny for your thoughs?</h2>
       {thoughtsList.filter((item) => thoughtsList.indexOf(item) < renderCount - 1).map((item) => <ListItem item={item} />)}
       {
         renderCount > thoughtsList.length ? null
