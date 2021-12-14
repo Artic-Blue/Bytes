@@ -42,7 +42,7 @@ const ProductList = () => {
     justify-content: start;
   }
 `;
-
+  // look into adding hover
   const PaddedImages = styled.img`
     height: 100px;
     width: 160px;
@@ -77,26 +77,51 @@ const ProductList = () => {
   // }
   // `;
 
+  const FlexBoxContainer = styled.div`
+    display: flex;
+    width: 95vw;
+    position: relative;
+  `;
+
+  const SidebarContainer = styled.div`
+    display: flex;
+    width: 20%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+  `;
+  const SearchAndProductsContainer = styled.div`
+    display: flex;
+    width: 80%;
+    height: 100%;
+    flex-direction: column;
+  `;
+
   const navigate = useNavigate();
 
   return (
     <Div>
       <Banner category={category} />
-      <SearchBar setCategory={setCategory} />
-      <Sidebar setCategory={setCategory} />
-      <h2>Products</h2>
-      The current category is:
-      {' '}
-      {category}
-      <Grid>
-        {products.map((product) => (
-          <Col span={6} sm={3} md={3} lg={3} onClick={() => navigate(`/shop/products/${product.product_id}`)}>
-            <p>{product.product_name}</p>
-            <PaddedImages src={product.image_url} alt="" />
-          </Col>
+      <FlexBoxContainer>
+        <SidebarContainer>
+          <Sidebar setCategory={setCategory} category={category} />
+        </SidebarContainer>
+        <SearchAndProductsContainer>
+          <SearchBar setCategory={setCategory} />
+          Showing:
+          {' '}
+          {category === 'Meal' ? 'Meals' : category}
+          <Grid>
+            {products.map((product) => (
+              <Col span={6} sm={3} md={3} lg={3} onClick={() => navigate(`/shop/products/${product.product_id}`)}>
+                <p>{product.product_name}</p>
+                <PaddedImages src={product.image_url} alt="" />
+              </Col>
+            ))}
+          </Grid>
+        </SearchAndProductsContainer>
 
-        ))}
-      </Grid>
+      </FlexBoxContainer>
 
     </Div>
   );
