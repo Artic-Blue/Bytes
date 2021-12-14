@@ -8,27 +8,10 @@ const Cart = () => {
   // const user = 1;
   const [cartItems, setCartItems] = useState([]);
 
-  // const fakeCart = () => {
-  //   axios.get('/shop/products/24')
-  //     .then((data) => {
-  //       if (data) {
-  //         setCartItems([{
-  //           product_name: data.data[0].product_name,
-  //           image_url: data.data[0].image_url,
-  //           price: data.data[0].price,
-  //         }]);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log('fakeCart request failed: ', err);
-  //     });
-  // };
-
   const getCart = () => {
     axios.get('/cart')
       .then((data) => {
         if (data) {
-          // console.log('Here is what getCart returned: ', data.data);
           setCartItems(data.data);
         }
       })
@@ -37,11 +20,7 @@ const Cart = () => {
       });
   };
 
-  useEffect(() => {
-    // fakeCart();
-    getCart();
-  }, []);
-  // useEffect(getCart, []);
+  useEffect(getCart, []);
 
   const cartItemsAsListElements = cartItems.map((item) => (
     <li>
@@ -86,7 +65,6 @@ const Cart = () => {
   return (
     <div>
       <h2>Your Cart --</h2>
-      {/* <h2>These are the items in your cart-- </h2> */}
       <ul>
         {cartItemsAsListElements}
       </ul>

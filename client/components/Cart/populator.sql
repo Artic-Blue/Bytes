@@ -1,4 +1,7 @@
 
+psql postgres
+
+\c bytes;
 
 INSERT INTO cart(user_id, product_id, cart_quantity)
  VALUES (1, 1, 1)
