@@ -9,7 +9,6 @@ exports.getProducts = async (req, res) => {
 
   try {
     const result = await queryDB(pool, query);
-    console.log('server', result.rows);
     res.send(result.rows);
   } catch (err) {
     console.log('Error: ', err.message);

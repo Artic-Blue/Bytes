@@ -52,26 +52,6 @@ const ProductList = () => {
   display: flex;
   flex-direction: column;
 `;
-  const Img = styled.img`
-  box-shadow: 2px 2px 5px darkgrey;
-  position: absolute;
-  height: 90vh;
-  width: 35vw;
-  object-fit: cover;
-  cursor: -webkit-zoom-in;
-`;
-  // const Button = styled(FontAwesomeIcon)`
-  // position: absolute;
-  // font-size: 4.5vh;
-  // cursor: pointer;
-  // z-index: 10;
-  // color: #F8F0FB;
-  // -webkit-text-stroke: 1vh white;
-  // opacity: 50%;
-  // &:hover {
-  //   opacity: 100;
-  // }
-  // `;
 
   const FlexBoxContainer = styled.div`
     display: flex;
@@ -84,7 +64,8 @@ const ProductList = () => {
     width: 15%;
     height: 100%;
     flex-direction: column;
-    justify-content: flex-start;
+    align-items: flex-start;
+    border: 1px solid orange
   `;
   const SearchAndProductsContainer = styled.div`
     display: flex;
