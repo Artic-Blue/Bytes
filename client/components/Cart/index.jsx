@@ -1,18 +1,17 @@
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { useUser } from '../../context/UserContext';
+import { useUser } from '../../context/UserContext';
 import {
   ListContainer, ItemContainer, SubItemContainer, ImageContainer,
 } from './Cart.styled';
 
 const Cart = () => {
-  // const user = useUser();
-  // const user = 1;
   const [cartItems, setCartItems] = useState([]);
+  const user = useUser();
 
   const getCart = () => {
-    axios.get('/cart')
+    axios.get(`/cart/${user}`)
       .then((data) => {
         if (data) {
           setCartItems(data.data);
