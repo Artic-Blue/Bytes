@@ -43,7 +43,7 @@ const Cart = () => {
         </SubItemContainer>
         <SubItemContainer>
           <div>
-            Quantity of This Item in Your Cart--
+            Quantity--
             {'  '}
             {item.cart_quantity}
           </div>
@@ -55,7 +55,7 @@ const Cart = () => {
             .00
           </div>
           <div>
-            Total Price for This Item--
+            Total Price--
             {'  '}
             $
             {parseInt(item.cart_quantity, 10) * parseInt(item.price, 10)}
@@ -70,8 +70,9 @@ const Cart = () => {
   ));
 
   return (
-    <ListContainer>
-      <div>
+
+    <div>
+      <ListContainer>
         <h2>Your Cart</h2>
         <ul>
           {cartItemsAsListElements}
@@ -79,9 +80,9 @@ const Cart = () => {
         <form onSubmit={checkOut}>
           <button type="submit">Check Out and Pay</button>
         </form>
+      </ListContainer>
+    </div>
 
-      </div>
-    </ListContainer>
   );
 };
 
