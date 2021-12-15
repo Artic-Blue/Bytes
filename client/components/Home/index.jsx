@@ -11,22 +11,30 @@ const Home = () => (
       </LogoDiv>
     </Title>
     <Links>
-      <StyledLink to="/shop">
-        <ButtonToPage>
+      <ButtonToPage>
+        <StyledLink to="/shop">
           <img src="../images/meals.jpg" alt="" />
           <CenterText>
             Meals
           </CenterText>
-        </ButtonToPage>
-      </StyledLink>
-      <StyledLink to="/tracker">
-        <ButtonToPage>
+        </StyledLink>
+      </ButtonToPage>
+      <ButtonToPage>
+        <StyledLink to="/tracker">
           <img src="../images/lifestyle.jpg" alt="" />
           <CenterText>
             Lifestyle
           </CenterText>
-        </ButtonToPage>
-      </StyledLink>
+        </StyledLink>
+      </ButtonToPage>
+      <ButtonToPage>
+        <StyledLink to="/shop/farmers">
+          <img src="../images/home-farmer-image.jpeg" alt="" />
+          <CenterText>
+            Farmers
+          </CenterText>
+        </StyledLink>
+      </ButtonToPage>
     </Links>
   </Homepage>
 );
@@ -36,7 +44,8 @@ const Homepage = styled.div`
   position: relative;
   flex-direction: column;
   align-items: center;
-  width: 70vw;
+  width: 100vw;
+  height: 100vh;
 `;
 
 const Title = styled.div`
@@ -44,8 +53,8 @@ const Title = styled.div`
   position: relative;
 
   img {
-    height: 50vh;
-    width: auto;
+    height: auto;
+    width: 100vw;
   }
 `;
 
@@ -56,25 +65,27 @@ const LogoDiv = styled.div`
   right: 5%;
 
   img {
-    height: 10vw;
+    height: 20vw;
     width: auto;
   }
-`;
-
-const Links = styled.div`
-  display: flex;
-  position: relative;
 `;
 
 const ButtonToPage = styled.div`
   display: flex;
   position: relative;
   margin: 5vh 5vw;
-
+  margin-top: 5vh;
+  
   img {
-    width: 20vw;
-    height: 18vh;
+    box-shadow: 2px 2px 5px darkgrey;
+    width: 22vw;
+    height: 20vh;
   }
+`;
+
+const Links = styled.div`
+  display: flex;
+  position: relative;
 `;
 
 const StyledLink = styled(Link)`
@@ -86,11 +97,12 @@ const StyledLink = styled(Link)`
 const CenterText = styled.div`
   background: rgba(0, 0, 0, 0.75);
   padding: 4px 8px;
-  border-radius: 25px;
+  border-radius: 15px;
   color: white;
   margin: 0;
   display: flex;
   position: absolute;
+  opacity: 80%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
