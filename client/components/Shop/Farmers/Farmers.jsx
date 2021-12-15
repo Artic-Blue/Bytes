@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-
-const DescriptionTitle = styled.div`
-display: flex;
-flex: 1;
-font-size: 12px;
-color: #91968A;
-font-weight: bold;
-`;
+import { useNavigate } from 'react-router-dom';
 
 const FarmSection = styled.div`
 font-weight: 200;
@@ -30,6 +23,7 @@ const FarmPhoto = styled.img`
   width: 25vw;
   object-fit: cover;
   padding-left: 10px;
+  cursor: pointer;
 `;
 
 const FarmBox = styled.div`
@@ -46,6 +40,15 @@ const FarmBox = styled.div`
   }
 `;
 
+const FarmLink = styled.p`
+  cursor: pointer;
+  &:hover {
+    color: #3D8B8E;
+  }
+  height: 1vh;
+
+`;
+
 const Farmers = () => {
   const [farmersDetails, setFarmersDetails] = useState([]);
   const getFarmers = () => {
@@ -56,18 +59,23 @@ const Farmers = () => {
       .catch((err) => console.log(err));
   };
   useEffect(getFarmers, {});
-
+  const navigate = useNavigate();
   return (
     <div>
-      <h1>Meet the Farmers</h1>
+      <FarmBox>
+        <h3>Meet the Farmers</h3>
+      </FarmBox>
       {farmersDetails.map((farmer) => (
         <FarmSection>
           <FarmInfo>
-            <FarmPhoto src={farmer.farmer_url} alt="" />
+            <FarmPhoto src={farmer.farmer_url} alt="" onClick={() => navigate(`/shop/farmers/${farmer.farmer_id}`)} />
             <FarmBox>
               <h3>{farmer.farmer_name}</h3>
               {farmer.farmer_story}
             </FarmBox>
+            <FarmLink onClick={() => navigate(`/shop/farmers/${farmer.farmer_id}`)}>
+              learn more
+            </FarmLink>
           </FarmInfo>
         </FarmSection>
       ))}
