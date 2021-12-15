@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const BannerDiv = styled.div`
 width: 106vw;
-height: 25vh;
+height: 30vh;
 margin-left: -3vw;
 margin-right: -2vw;
 margin-bottom: 3vh;

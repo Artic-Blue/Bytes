@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Grid, Col } from '@mantine/core';
 
 const GridFlex = styled.div`
-height: 33vh;
+height: 250px;
 width: 200px;
 display: flex;
 position: relative;
@@ -29,13 +29,12 @@ const FarmDiv = styled.div`
 `;
 
 const ProductDiv = styled.div`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   inline-size: 200px;
   overflow-wrap: break-word;
 `;
 
 const PriceSpan = styled.span`
-font-size: 1.2rem;
 font-weight: bold;
 color: black;
 width: 200px;
