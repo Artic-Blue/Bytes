@@ -27,6 +27,14 @@ const Home = () => (
           </CenterText>
         </ButtonToPage>
       </StyledLink>
+      <StyledLink to="/shop/farmers">
+        <ButtonToPage>
+          <img src="../images/home-farmer-image.jpeg" alt="" />
+          <CenterText>
+            Farmers
+          </CenterText>
+        </ButtonToPage>
+      </StyledLink>
     </Links>
   </Homepage>
 );
@@ -36,7 +44,8 @@ const Homepage = styled.div`
   position: relative;
   flex-direction: column;
   align-items: center;
-  width: 70vw;
+  width: 100vw;
+  height: 100vh;
 `;
 
 const Title = styled.div`
@@ -44,8 +53,8 @@ const Title = styled.div`
   position: relative;
 
   img {
-    height: 50vh;
-    width: auto;
+    height: auto;
+    width: 100vw;
   }
 `;
 
@@ -56,7 +65,7 @@ const LogoDiv = styled.div`
   right: 5%;
 
   img {
-    height: 10%;
+    height: 20vw;
     width: auto;
   }
 `;
@@ -70,10 +79,11 @@ const ButtonToPage = styled.div`
   display: flex;
   position: relative;
   margin: 5vh 5vw;
-
+  box-shadow: 2px 2px 5px darkgrey;
   img {
-    width: 20vw;
-    height: 18vh;
+    // border-radius: 5px;
+    width: 22vw;
+    height: 20vh;
   }
 `;
 
@@ -91,6 +101,7 @@ const CenterText = styled.div`
   margin: 0;
   display: flex;
   position: absolute;
+  opacity: 40%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
