@@ -51,10 +51,11 @@ const Form = ({ getList, renderCount, user }) => {
               name="feeling"
               value={1}
               id="bad"
-              onChange={(event) => updateFeeling(event.target.value)} />
+              onChange={(event) => updateFeeling(event.target.value)}
+            />
 
             <label className="radio" htmlFor="red">
-              <img src="https://emoji.gg/assets/emoji/9528-sad-sweat.png" width="64px" height="64px" alt="sad_sweat"></img>
+              <img src="https://emoji.gg/assets/emoji/9528-sad-sweat.png" width="64px" height="64px" alt="sad_sweat" />
             </label>
 
             <input
@@ -63,10 +64,11 @@ const Form = ({ getList, renderCount, user }) => {
               name="feeling"
               value={2}
               id="kindabad"
-              onChange={(event) => updateFeeling(event.target.value)} />
+              onChange={(event) => updateFeeling(event.target.value)}
+            />
 
             <label className="radio" htmlFor="pink">
-              <img src="https://emoji.gg/assets/emoji/9004-super-frown.png" width="64px" height="64px" alt="super_frown"></img>
+              <img src="https://emoji.gg/assets/emoji/9004-super-frown.png" width="64px" height="64px" alt="super_frown" />
             </label>
 
             <input
@@ -75,10 +77,11 @@ const Form = ({ getList, renderCount, user }) => {
               name="feeling"
               value={3}
               id="medium"
-              onChange={(event) => updateFeeling(event.target.value)} />
+              onChange={(event) => updateFeeling(event.target.value)}
+            />
 
             <label className="radio" htmlFor="white">
-              <img src="https://emoji.gg/assets/emoji/2542-imposter.png" width="64px" height="64px" alt="imposter"></img>
+              <img src="https://emoji.gg/assets/emoji/2542-imposter.png" width="64px" height="64px" alt="imposter" />
             </label>
 
             <input
@@ -87,10 +90,11 @@ const Form = ({ getList, renderCount, user }) => {
               name="feeling"
               value={4}
               id="kindagreat"
-              onChange={(event) => updateFeeling(event.target.value)} />
+              onChange={(event) => updateFeeling(event.target.value)}
+            />
 
             <label className="radio" htmlFor="lightgreen">
-              <img src="https://emoji.gg/assets/emoji/8664-coolangel.png" width="64px" height="64px" alt="coolangel"></img>
+              <img src="https://emoji.gg/assets/emoji/8664-coolangel.png" width="64px" height="64px" alt="coolangel" />
             </label>
 
             <input
@@ -99,10 +103,11 @@ const Form = ({ getList, renderCount, user }) => {
               name="feeling"
               value={5}
               id="great"
-              onChange={(event) => updateFeeling(event.target.value)} />
+              onChange={(event) => updateFeeling(event.target.value)}
+            />
 
             <label className="radio" htmlFor="green">
-              <img src="https://emoji.gg/assets/emoji/8548-birthday.png" width="64px" height="64px" alt="birthday"></img>
+              <img src="https://emoji.gg/assets/emoji/8548-birthday.png" width="64px" height="64px" alt="birthday" />
             </label>
 
           </FeelingsContainer>
@@ -113,26 +118,18 @@ const Form = ({ getList, renderCount, user }) => {
   );
 };
 
-const StyledForm = styled.form`
-
-
-}
-`
-
 const FeelingHeader = styled.h2`
 margin-bottom: 35px;
-`
+`;
 
 const WelcomeMessage = styled.h2`
 
 margin-bottom: 35px;
 margin-top: 35px;
-`
+`;
 
 const ThoughtInput = styled.input.attrs((props) => ({
-  // we can define static props
   type: 'text',
-  // or we can define dynamic ones
   size: props.size || '2em',
 }))`
   margin-top: 20px;
@@ -146,19 +143,14 @@ const ThoughtInput = styled.input.attrs((props) => ({
 
 const FeelingsContainer = styled.div`
 padding: '50px';
-/* background-color: teal; */
 max-height: '50px';
 max-width: '100px';
 margin-top: '100px';
 grid-row-start: 1;
 
-
-
 `;
 
 const ThoughtsContainer = styled.div`
-/* background-color: pink; */
-/* justify-content: space-between; */
 grid-column-start: col-start 2;
 height: '50px';
 width: '100px';
