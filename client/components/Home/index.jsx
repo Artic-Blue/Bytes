@@ -19,14 +19,6 @@ const Home = () => (
           </CenterText>
         </ButtonToPage>
       </StyledLink>
-      {/* <StyledLink to="/shop/products">
-        <ButtonToPage>
-          <img src="../images/groceries.jpeg" alt="" />
-          <CenterText>
-            Shop Groceries
-          </CenterText>
-        </ButtonToPage>
-      </StyledLink> */}
       <StyledLink to="/tracker">
         <ButtonToPage>
           <img src="../images/lifestyle.jpg" alt="" />
