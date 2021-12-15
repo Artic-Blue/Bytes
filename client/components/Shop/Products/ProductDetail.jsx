@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useUser } from '../../../context/UserContext.jsx';
 
 const ProductDetail = () => {
   const params = useParams();
@@ -9,6 +10,8 @@ const ProductDetail = () => {
   const [cartValue, setCartValue] = useState(1);
   const [parsedIngredients, setParsedIngredients] = useState([]);
   const [splitInstructions, setSplitInstructions] = useState([]);
+  const user = useUser();
+
   const getProductDetails = () => {
     axios.get(`http://localhost:3000/shop/product/${params.productId}`)
       .then((result) => {
@@ -95,9 +98,16 @@ const ProductDetail = () => {
 
   const ProductPrice = styled.div`
     display: flex;
-    font-size: 2.0rem;
+    font-size: 2.5rem;
     font-weight: bold;
     flex: 1;
+    vertical-align: text-top;
+
+    sup {
+      font-size: 1.2rem;
+      vertical-align: super;
+
+    }
   `;
 
   const ProductAmount = styled.div`
@@ -123,7 +133,7 @@ const ProductDetail = () => {
 
   const QuantityBox = styled.div`
     display: flex;
-    font-size: 12px;
+    font-size: 0.9rem;
     color: #91968A;
     font-weight: bold;
     margin-bottom: 10px;
@@ -139,11 +149,11 @@ const ProductDetail = () => {
     `;
 
   const CartButton = styled.input`
-    display: flex;
-    font-size: 12px;
-    font-weight: 100;
+    font-size: 1.2rem;
+    font-weight: bold;
     border: none;
     color: white;
+    text-align: center;
     background: #5FACA8;
     width: 100%;
     height: 40px;
@@ -153,6 +163,10 @@ const ProductDetail = () => {
     &:hover {
       background: #3D8B8E;
     }
+    &:active {
+      position: relative;
+      top: 8px;
+  }
   `;
 
   const DescriptionBox = styled.div`
@@ -225,7 +239,11 @@ const ProductDetail = () => {
         <ProductImage src={productDetails.image_url} alt="" />
         <SideBox>
           <FarmName>
-            <h1>{productDetails.farmer_name}</h1>
+            <h1>
+              {productDetails.farmer_name}
+              {' '}
+              Farms
+            </h1>
           </FarmName>
           <ProductName>
             <h1>{productDetails.product_name}</h1>
@@ -233,8 +251,8 @@ const ProductDetail = () => {
           <PriceAndAmount>
             <ProductPrice>
               <h1>
-                $
                 {productDetails.price}
+                <sup>99</sup>
               </h1>
             </ProductPrice>
             <ProductAmount>
@@ -244,12 +262,15 @@ const ProductDetail = () => {
           <CartBox>
             <CartForm onSubmit={(event) => {
               event.preventDefault();
-              // console.log(params.productId);
-              axios.put('http://localhost:3000/shop/cart', {
-                userId: 245,
-                productId: params.productId,
-                quantity: cartValue,
-              });
+              if (user === null) {
+                alert('Please log in before adding to cart.');
+              } else {
+                axios.put('http://localhost:3000/shop/cart', {
+                  userId: user,
+                  productId: params.productId,
+                  quantity: cartValue,
+                });
+              }
             }}
             >
               <QuantityBox>

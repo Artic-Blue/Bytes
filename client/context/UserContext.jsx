@@ -13,7 +13,7 @@ export const useUserUpdate = () => (
 );
 
 export const UserProvider = ({ children }) => {
-  const [User, setUser] = useState(null);
+  const [User, setUser] = useState(1);
 
   const updateUser = (id) => (
     setUser(id)
