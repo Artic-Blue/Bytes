@@ -60,6 +60,7 @@ CREATE TABLE farmers (
   farmer_name VARCHAR(255) NULL DEFAULT NULL,
   farmer_story TEXT NULL DEFAULT NULL,
   farmer_url VARCHAR(255) NULL DEFAULT NULL,
+  farmer_long_story TEXT NULL DEFAULT NULL,
 
   PRIMARY KEY (farmer_id)
 );

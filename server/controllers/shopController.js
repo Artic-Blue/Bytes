@@ -43,3 +43,32 @@ exports.postCart = async (req, res) => {
     res.sendStatus(500);
   }
 };
+
+exports.getFarmers = async (req, res) => {
+  const query = `
+    SELECT * FROM farmers
+  `;
+
+  try {
+    const result = await queryDB(pool, query);
+    res.send(result.rows);
+  } catch (err) {
+    console.log('Error: ', err.message);
+    res.sendStatus(500);
+  }
+};
+
+exports.getFarmerDetails = async (req, res) => {
+  const { id } = req.params;
+  const query = `
+    SELECT * FROM farmers WHERE farmers.farmer_id = ${id}
+  `;
+
+  try {
+    const result = await queryDB(pool, query);
+    res.send(result.rows);
+  } catch (err) {
+    console.log('Error: ', err.message);
+    res.sendStatus(500);
+  }
+};
