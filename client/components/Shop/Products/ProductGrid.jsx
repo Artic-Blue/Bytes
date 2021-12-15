@@ -24,8 +24,12 @@ const PaddedImages = styled.img`
   cursor: pointer;
 `;
 
-const FarmDiv = styled.div`
+const FarmDiv = styled.p`
   color: grey;
+  cursor: pointer;
+  &:hover {
+    color: #3D8B8E;
+  }
 `;
 
 const ProductDiv = styled.div`
