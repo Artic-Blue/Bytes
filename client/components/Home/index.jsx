@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Home = () => (
-  <>
+  <Homepage>
     <Title>
+      <img src="../images/cornucopia.jpg" alt="bountiful bounty of food items" />
       <LogoDiv>
         <img src="../images/best-eats-inc.png" alt="logo" />
       </LogoDiv>
-      <img src="../images/cornucopia.jpg" alt="bountiful bounty of food items" />
     </Title>
     <Links>
       <StyledLink to="/shop">
@@ -28,65 +28,72 @@ const Home = () => (
         </ButtonToPage>
       </StyledLink>
     </Links>
-  </>
+  </Homepage>
 );
+
+const Homepage = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  width: 70vw;
+`;
+
+const Title = styled.div`
+  display: flex;
+  position: relative;
+
+  img {
+    height: 50vh;
+    width: auto;
+  }
+`;
 
 const LogoDiv = styled.div`
   display: flex;
   position: absolute;
   bottom: 7%;
   right: 5%;
-  img{
-    max-height: 25vh;
-    max-width: auto;  }
-`;
-
-const Title = styled.div`
-  display: flex;
-  position: relative;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
 
   img {
-    max-height: 70vh;
-    max-width: auto;
+    height: 10%;
+    width: auto;
   }
 `;
 
 const Links = styled.div`
   display: flex;
-  width: 50vw;
-  height: 30vh;
   position: relative;
-  justify-content: space-between;
-  align-items: center;
-  overflow: hidden;
 `;
 
 const ButtonToPage = styled.div`
-display: flex;
-text-align: center;
-overflow: hidden;
+  display: flex;
+  position: relative;
+  margin: 5vh 5vw;
 
-img {
-  max-width: 30vw;
-  max-height: 26vh;
-}
+  img {
+    width: 20vw;
+    height: 18vh;
+  }
 `;
 
 const StyledLink = styled(Link)`
-  color: white;
   font-weight: 900;
   font-size: 40px;
   text-decoration: none;
 `;
 
 const CenterText = styled.div`
+  background: rgba(0, 0, 0, 0.75);
+  padding: 4px 8px;
+  border-radius: 25px;
+  color: white;
+  margin: 0;
   display: flex;
-  position: relative;
-  top: 110px;
-  right: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export default Home;
