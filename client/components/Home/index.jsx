@@ -56,7 +56,7 @@ const LogoDiv = styled.div`
   right: 5%;
 
   img {
-    height: 10%;
+    height: 10vw;
     width: auto;
   }
 `;
