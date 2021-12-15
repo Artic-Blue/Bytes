@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import { useUser } from '../../context/UserContext';
-import { ListContainer, ItemContainer, SubItemContainer } from './Cart.styled';
+import {
+  ListContainer, ItemContainer, SubItemContainer, ImageContainer,
+} from './Cart.styled';
 
 const Cart = () => {
   // const user = useUser();
@@ -29,58 +31,53 @@ const Cart = () => {
   }
 
   const cartItemsAsListElements = cartItems.map((item) => (
-    <li>
-      <ItemContainer>
-        <SubItemContainer>
-          <div>
-            {item.product_name}
-          </div>
-          <div>
-            Size--
-            {'  '}
-            {item.quantity}
-          </div>
-        </SubItemContainer>
-        <SubItemContainer>
-          <div>
-            Quantity of This Item in Your Cart--
-            {'  '}
-            {item.cart_quantity}
-          </div>
-          <div>
-            Price for Each--
-            {'  '}
-            $
-            {item.price}
-            .00
-          </div>
-          <div>
-            Total Price for This Item--
-            {'  '}
-            $
-            {parseInt(item.cart_quantity, 10) * parseInt(item.price, 10)}
-            .00
-          </div>
-        </SubItemContainer>
+    <ItemContainer>
+      <SubItemContainer>
         <div>
-          <img src={item.image_url} alt="None" />
+          {item.product_name}
         </div>
-      </ItemContainer>
-    </li>
+        <div>
+          Size--
+          {'  '}
+          {item.quantity}
+        </div>
+      </SubItemContainer>
+      <SubItemContainer>
+        <div>
+          Quantity of This Item in Your Cart--
+          {'  '}
+          {item.cart_quantity}
+        </div>
+        <div>
+          Price for Each--
+          {'  '}
+          $
+          {item.price}
+          .00
+        </div>
+        <div>
+          Total Price for This Item--
+          {'  '}
+          $
+          {parseInt(item.cart_quantity, 10) * parseInt(item.price, 10)}
+          .00
+        </div>
+      </SubItemContainer>
+      <ImageContainer>
+        <img src={item.image_url} alt="None" />
+      </ImageContainer>
+    </ItemContainer>
   ));
 
   return (
     <ListContainer>
-      <div>
-        <h2>Your Cart</h2>
-        <ul>
-          {cartItemsAsListElements}
-        </ul>
-        <form onSubmit={checkOut}>
-          <button type="submit">Check Out and Pay</button>
-        </form>
-
-      </div>
+      <h2>Your Cart</h2>
+      <ul>
+        {cartItemsAsListElements}
+      </ul>
+      <form onSubmit={checkOut}>
+        <button type="submit">Check Out and Pay</button>
+      </form>
     </ListContainer>
   );
 };
