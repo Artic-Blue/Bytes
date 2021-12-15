@@ -75,8 +75,8 @@ const ButtonToPage = styled.div`
   position: relative;
   margin: 5vh 5vw;
   margin-top: 5vh;
+  
   img {
-    // border-radius: 5px;
     box-shadow: 2px 2px 5px darkgrey;
     width: 22vw;
     height: 20vh;
