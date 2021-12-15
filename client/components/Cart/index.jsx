@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { DatePicker } from '@mantine/dates';
 import { useUser } from '../../context/UserContext';
 import {
   ListContainer, ItemContainer, SubItemContainer, ImageContainer,
@@ -40,6 +41,7 @@ const Cart = () => {
           {'  '}
           {item.quantity}
         </div>
+        <DatePicker placeholder="Pick date" label="Deliver Date" required />
       </SubItemContainer>
       <SubItemContainer>
         <div>

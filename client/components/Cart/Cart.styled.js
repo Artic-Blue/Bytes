@@ -34,6 +34,10 @@ const SubItemContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 33%;
+
+  > *  {
+    padding: 10px;
+  }
 `;
 
 const ImageContainer = styled.div`
