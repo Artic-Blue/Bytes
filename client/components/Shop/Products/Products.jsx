@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Grid, Col } from '@mantine/core';
+import { SimpleGrid, Col } from '@mantine/core';
 import Sidebar from './Sidebar.jsx';
 import Banner from './Banner.jsx';
 import SearchBar from './SearchBar.jsx';
+import ProductGrid from './ProductGrid.jsx';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ProductList = () => {
@@ -22,32 +23,6 @@ const ProductList = () => {
   };
   useEffect(getProducts, [category]);
 
-  const ExampleStyledComponent = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 50px;
-  width: calc(100% - 20px);
-
-  img {
-    height: 100px;
-    width: 100px;
-    object-fit: cover;
-  }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    color: blue;
-    justify-content: start;
-  }
-`;
-  // look into adding hover
-  const PaddedImages = styled.img`
-    height: 100px;
-    width: 160px;
-    object-fit: cover;
-`;
   // from loungeo
   const Div = styled.div`
   height: 95vh;
@@ -56,26 +31,6 @@ const ProductList = () => {
   display: flex;
   flex-direction: column;
 `;
-  const Img = styled.img`
-  box-shadow: 2px 2px 5px darkgrey;
-  position: absolute;
-  height: 90vh;
-  width: 35vw;
-  object-fit: cover;
-  cursor: -webkit-zoom-in;
-`;
-  // const Button = styled(FontAwesomeIcon)`
-  // position: absolute;
-  // font-size: 4.5vh;
-  // cursor: pointer;
-  // z-index: 10;
-  // color: #F8F0FB;
-  // -webkit-text-stroke: 1vh white;
-  // opacity: 50%;
-  // &:hover {
-  //   opacity: 100;
-  // }
-  // `;
 
   const FlexBoxContainer = styled.div`
     display: flex;
@@ -85,19 +40,17 @@ const ProductList = () => {
 
   const SidebarContainer = styled.div`
     display: flex;
-    width: 20%;
+    width: 15%;
     height: 100%;
     flex-direction: column;
-    justify-content: flex-start;
+    align-items: flex-start;
   `;
   const SearchAndProductsContainer = styled.div`
     display: flex;
-    width: 80%;
+    width: 85%;
     height: 100%;
     flex-direction: column;
   `;
-
-  const navigate = useNavigate();
 
   return (
     <Div>
@@ -105,20 +58,12 @@ const ProductList = () => {
       <FlexBoxContainer>
         <SidebarContainer>
           <Sidebar setCategory={setCategory} category={category} />
+          <SearchBar setCategory={setCategory} />
         </SidebarContainer>
         <SearchAndProductsContainer>
-          <SearchBar setCategory={setCategory} />
-          Showing:
-          {' '}
-          {category === 'Meal' ? 'Meals' : category}
-          <Grid>
-            {products.map((product) => (
-              <Col span={6} sm={3} md={3} lg={3} onClick={() => navigate(`/shop/products/${product.product_id}`)}>
-                <p>{product.product_name}</p>
-                <PaddedImages src={product.image_url} alt="" />
-              </Col>
-            ))}
-          </Grid>
+          <SimpleGrid cols={4} spacing="xl">
+            <ProductGrid products={products} />
+          </SimpleGrid>
         </SearchAndProductsContainer>
 
       </FlexBoxContainer>
