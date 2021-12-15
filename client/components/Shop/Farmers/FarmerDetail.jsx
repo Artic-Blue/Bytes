@@ -53,7 +53,10 @@ const FarmerDetail = () => {
   const getFarmerDetails = () => {
     axios.get(`http://localhost:3000/shop/farmers/${params.farmerId}`)
       .then((result) => {
-        setFarmerDetails(result.data[0]);
+        const farmerInfo = result.data[0];
+        // farmerInfo.farmer_long_story = farmerInfo.farmer_long_story.split(' ');
+        setFarmerDetails(farmerInfo);
+        console.log(farmerInfo);
       })
       .catch((err) => console.log(err));
   };
@@ -71,6 +74,9 @@ const FarmerDetail = () => {
           </FarmBox>
         </FarmInfo>
       </FarmSection>
+      <div>
+        {farmerDetails.farmer_long_story}
+      </div>
     </>
   );
 };
