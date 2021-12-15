@@ -3,31 +3,97 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Home = () => (
-  <>
-    <Title>Home</Title>
+  <Homepage>
+    <Title>
+      <img src="../images/cornucopia.jpg" alt="bountiful bounty of food items" />
+      <LogoDiv>
+        <img src="../images/best-eats-inc.png" alt="logo" />
+      </LogoDiv>
+    </Title>
     <Links>
-      <Link to="/shop">Shop</Link>
-      <Link to="/tracker">Tracker</Link>
-      <Link to="/shop/farmers">Meet Our Farmers</Link>
+      <StyledLink to="/shop">
+        <ButtonToPage>
+          <img src="../images/meals.jpg" alt="" />
+          <CenterText>
+            Meals
+          </CenterText>
+        </ButtonToPage>
+      </StyledLink>
+      <StyledLink to="/tracker">
+        <ButtonToPage>
+          <img src="../images/lifestyle.jpg" alt="" />
+          <CenterText>
+            Lifestyle
+          </CenterText>
+        </ButtonToPage>
+      </StyledLink>
     </Links>
-  </>
+  </Homepage>
 );
 
-const Title = styled.h1`
-  font-size: 20vh;
+const Homepage = styled.div`
   display: flex;
-  width: 50vw;
-  height: 30vh;
   position: relative;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
+  width: 70vw;
+`;
+
+const Title = styled.div`
+  display: flex;
+  position: relative;
+
+  img {
+    height: 50vh;
+    width: auto;
+  }
+`;
+
+const LogoDiv = styled.div`
+  display: flex;
+  position: absolute;
+  bottom: 7%;
+  right: 5%;
+
+  img {
+    height: 10%;
+    width: auto;
+  }
 `;
 
 const Links = styled.div`
-display: flex;
-width: 95vw;
-height: 50vh;
-position: relative;
-justify-content: space-around;
-align-items: flex-end;
+  display: flex;
+  position: relative;
 `;
+
+const ButtonToPage = styled.div`
+  display: flex;
+  position: relative;
+  margin: 5vh 5vw;
+
+  img {
+    width: 20vw;
+    height: 18vh;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  font-weight: 900;
+  font-size: 40px;
+  text-decoration: none;
+`;
+
+const CenterText = styled.div`
+  background: rgba(0, 0, 0, 0.75);
+  padding: 4px 8px;
+  border-radius: 25px;
+  color: white;
+  margin: 0;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
 export default Home;
