@@ -14,6 +14,7 @@ font-weight: bold;
 const FarmSection = styled.div`
 font-weight: 200;
 display: flex;
+flex-direction: column;
 padding: 2vw;
 width: 62vw;
 border-top: 1px solid #CFCECA;
@@ -47,6 +48,20 @@ const FarmBox = styled.div`
   }
 `;
 
+const FarmerLongStory = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 5;
+  color: #383634;
+  padding-left: 25px;
+  line-height: 1.5em;
+  h3 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2.5em;
+  }
+`;
+
 const FarmerDetail = () => {
   const params = useParams();
   const [farmerDetails, setFarmerDetails] = useState({});
@@ -64,7 +79,7 @@ const FarmerDetail = () => {
 
   return (
     <>
-      <h1>Meet Our Farmers</h1>
+      <h1>Meet Our Farmer</h1>
       <FarmSection>
         <FarmInfo>
           <FarmPhoto src={farmerDetails.farmer_url} alt="" />
@@ -73,10 +88,10 @@ const FarmerDetail = () => {
             {farmerDetails.farmer_story}
           </FarmBox>
         </FarmInfo>
+        <FarmerLongStory>
+          {farmerDetails.farmer_long_story}
+        </FarmerLongStory>
       </FarmSection>
-      <div>
-        {farmerDetails.farmer_long_story}
-      </div>
     </>
   );
 };
