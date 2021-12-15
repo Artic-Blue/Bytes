@@ -57,8 +57,8 @@ const ProductList = () => {
       <Banner category={category} />
       <FlexBoxContainer>
         <SidebarContainer>
-          <Sidebar setCategory={setCategory} category={category} />
           <SearchBar setCategory={setCategory} />
+          <Sidebar setCategory={setCategory} category={category} />
         </SidebarContainer>
         <SearchAndProductsContainer>
           <SimpleGrid cols={4} spacing="xl">
