@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Select from 'react-dropdown-select';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Grid, Col } from '@mantine/core';
 
 const ProductDetail = () => {
   const params = useParams();
@@ -11,15 +9,20 @@ const ProductDetail = () => {
   const [cartValue, setCartValue] = useState(1);
   const [parsedIngredients, setParsedIngredients] = useState([]);
   const [splitInstructions, setSplitInstructions] = useState([]);
-
   const getProductDetails = () => {
     axios.get(`http://localhost:3000/shop/product/${params.productId}`)
       .then((result) => {
-        console.log(result.data[0]);
         setProductDetails(result.data[0]);
-        setParsedIngredients(result.data[0].ingredients);
         setSplitInstructions(result.data[0].instructions.split(/[\n]/));
-        console.log('Parsed Ingredients ', result.data[0]);
+        let { ingredients } = result.data[0];
+        ingredients = ingredients.split(',');
+        ingredients[0] = ingredients[0].substring(1);
+        ingredients[ingredients.length - 1] = ingredients[ingredients.length - 1]
+          .substring(0, ingredients[ingredients.length - 1].length - 1);
+        ingredients.forEach((x, i) => {
+          ingredients[i] = ingredients[i].includes('"') ? ingredients[i].replaceAll('"', '').trim() : ingredients[i].replaceAll("'", '').trim();
+        });
+        setParsedIngredients(ingredients);
       })
       .catch((err) => console.log(err));
   };
@@ -27,26 +30,12 @@ const ProductDetail = () => {
 
   const allowedAmount = productDetails.stock > 9 ? 9 : productDetails.stock;
 
-  const CartForm = styled.form`
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
-  height: 12vh;
-  width: 20vw;
-  position: relative;
-  flex-direction: column;
-  justify-content: flex-end;
-  display: flex;
-  font-family: 'Montserrat', sans-serif;
-  `;
-
   const ProductBox = styled.div`
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
     display: flex;
     width: 90vw;
     justify-content: flex-end;
-    font-family: 'Montserrat', sans-serif;
     color: #383634;
     padding: 2vw;
-
   `;
 
   const ProductImage = styled.img`
@@ -73,7 +62,6 @@ const ProductDetail = () => {
   border-radius: 5px;
   border-style: solid;
   cursor: pointer;
-
   &:hover {
     border-color: #3D8B8E;
     color: #3D8B8E;
@@ -82,14 +70,14 @@ const ProductDetail = () => {
 
   const ProductName = styled.div`
     display: flex;
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-size: 2.0rem;
+    font-weight: bold;
     `;
 
   const FarmName = styled.div`
     display: flex;
-    font-size: 0.8rem;
-    font-weight: 100;
+    font-size: 1.5rem;
+    font-weight: bold;
     cursor: pointer;
 
     &:hover {
@@ -101,26 +89,36 @@ const ProductDetail = () => {
     display: flex;
     justify-content: center;
     border-top: 2px solid #CFCECA;
+    padding-top: 30px;
+
   `;
 
   const ProductPrice = styled.div`
     display: flex;
-    font-size: 1.0rem;
+    font-size: 2.0rem;
     font-weight: bold;
     flex: 1;
   `;
 
   const ProductAmount = styled.div`
     display: flex;
-    font-size: 1.0rem;
+    font-size: 2.0rem;
     font-weight: 100;
     flex: 2;
+  `;
+
+  const CartForm = styled.form`
+    height: 12vh;
+    width: 20vw;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-end;
+    display: flex;
   `;
 
   const CartBox = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 20px;
   `;
 
   const QuantityBox = styled.div`
@@ -141,32 +139,30 @@ const ProductDetail = () => {
     `;
 
   const CartButton = styled.input`
-  display: flex;
-  font-size: 12px;
-  font-weight: 100;
-  border: none;
-  color: white;
-  background: #5FACA8;
-  width: 100%;
-  height: 40px;
-  border-radius: 20px;
-  cursor: pointer;
-  margin-top: 10px;
+    display: flex;
+    font-size: 12px;
+    font-weight: 100;
+    border: none;
+    color: white;
+    background: #5FACA8;
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    &:hover {
+      background: #3D8B8E;
+    }
+  `;
 
-  &:hover {
-    background: #3D8B8E;
-  }`;
-
-  const IngredientsAndInstructions = styled.div`
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
-    font-family: 'Montserrat', sans-serif;
+  const DescriptionBox = styled.div`
     font-weight: 200;
     display: flex;
     padding: 2vw;
     width: 62vw;
   `;
 
-  const InstructionsTitle = styled.div`
+  const DescriptionTitle = styled.div`
     display: flex;
     flex: 1;
     font-size: 12px;
@@ -174,21 +170,26 @@ const ProductDetail = () => {
     font-weight: bold;
   `;
 
-  const Instructions = styled.div`
+  const DescriptionBody = styled.div`
     display: flex;
     flex-direction: column;
     flex: 5;
     color: #383634;
+    line-height: 1.5em;
+    h3 {
+      font-weight: bold;
+      line-height: 2.5em;
+      font-size: 1.2rem;
+    }
   `;
 
   const FarmSection = styled.div`
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
-  font-family: 'Montserrat', sans-serif;
   font-weight: 200;
   display: flex;
   padding: 2vw;
   width: 62vw;
   border-top: 1px solid #CFCECA;
+  margin-bottom: 50px;
   `;
 
   const FarmInfo = styled.div`
@@ -199,9 +200,9 @@ const ProductDetail = () => {
 
   const FarmPhoto = styled.img`
     display: flex;
-    width: 200px;
-    height: 100px;
+    width: 25vw;
     object-fit: cover;
+    padding-left: 10px;
   `;
 
   const FarmBox = styled.div`
@@ -209,7 +210,13 @@ const ProductDetail = () => {
     flex-direction: column;
     flex: 5;
     color: #383634;
-    padding: 10px;
+    padding-left: 25px;
+    line-height: 1.5em;
+    h3 {
+      font-weight: bold;
+      font-size: 1.5rem;
+      line-height: 2.5em;
+    }
   `;
 
   return (
@@ -218,7 +225,7 @@ const ProductDetail = () => {
         <ProductImage src={productDetails.image_url} alt="" />
         <SideBox>
           <FarmName>
-            <h1>Bytes Family Farms</h1>
+            <h1>{productDetails.farmer_name}</h1>
           </FarmName>
           <ProductName>
             <h1>{productDetails.product_name}</h1>
@@ -266,46 +273,45 @@ const ProductDetail = () => {
           </CartBox>
         </SideBox>
       </ProductBox>
-
-      <IngredientsAndInstructions>
-        <InstructionsTitle>
+      <DescriptionBox>
+        <DescriptionTitle>
           INGREDIENTS
-        </InstructionsTitle>
-        <Instructions>
-          {productDetails.ingredients}
-        </Instructions>
-      </IngredientsAndInstructions>
-      <IngredientsAndInstructions>
-        <InstructionsTitle>
+        </DescriptionTitle>
+        <DescriptionBody>
+          <h3>What You Get</h3>
+          {parsedIngredients.map((ingredient) => (
+            <div>
+              <p>{ingredient}</p>
+            </div>
+          ))}
+        </DescriptionBody>
+      </DescriptionBox>
+      <DescriptionBox>
+        <DescriptionTitle>
           INSTRUCTIONS
-        </InstructionsTitle>
-        <Instructions>
-          {splitInstructions.map((instruction, i) => {
-            console.log('Mapping: ', instruction);
-            return (
-              <div>
-                <h3>
-                  Step
-                  {' '}
-                  {i + 1}
-                </h3>
-                <p>{instruction}</p>
-              </div>
-            );
-          })}
-        </Instructions>
-      </IngredientsAndInstructions>
+        </DescriptionTitle>
+        <DescriptionBody>
+          {splitInstructions.map((instruction, i) => (
+            <div>
+              <h3>
+                Step
+                {' '}
+                {i + 1}
+              </h3>
+              <p>{instruction}</p>
+            </div>
+          ))}
+        </DescriptionBody>
+      </DescriptionBox>
       <FarmSection>
-        <InstructionsTitle>
-          ABOUT THE PRODUCER
-        </InstructionsTitle>
+        <DescriptionTitle>
+          ABOUT THE FARMER
+        </DescriptionTitle>
         <FarmInfo>
-          <FarmPhoto src={productDetails.image_url} alt="" />
+          <FarmPhoto src={productDetails.farmer_url} alt="" />
           <FarmBox>
-            <h3>Bytes Family Farms</h3>
-            <p>
-              {productDetails.ingredients}
-            </p>
+            <h3>{productDetails.farmer_name}</h3>
+            {productDetails.farmer_story}
           </FarmBox>
         </FarmInfo>
       </FarmSection>
@@ -315,13 +321,3 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
-
-// {JSON.parse(productDetails.ingredients).map((ingredient) => (
-//   <p>{ingredient}</p>
-// ))}
-
-// Instructions:
-// {' '}
-// productDetails.instructions.split(/[!,?,.]/).map((sentence) => (
-//   <p>{sentence}</p>
-// ))
