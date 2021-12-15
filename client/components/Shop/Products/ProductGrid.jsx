@@ -68,7 +68,7 @@ const ProductGrid = ({ products }) => {
         <GridFlex>
           <div>
             <PaddedImages src={product.image_url} alt="" onClick={() => navigate(`/shop/products/${product.key_product_id}`)} />
-            <FarmDiv>
+            <FarmDiv onClick={() => navigate(`/shop/farmers/${product.farmer_id}`)}>
               {product.farmer_name}
               {' '}
               Farms

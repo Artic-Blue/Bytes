@@ -1,7 +1,78 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import axios from 'axios';
 
-const FarmerDetail = () => (
-  <h2>Farmer Detail</h2>
-);
+const DescriptionTitle = styled.div`
+display: flex;
+flex: 1;
+font-size: 12px;
+color: #91968A;
+font-weight: bold;
+`;
+
+const FarmSection = styled.div`
+font-weight: 200;
+display: flex;
+padding: 2vw;
+width: 62vw;
+border-top: 1px solid #CFCECA;
+margin-bottom: 50px;
+`;
+
+const FarmInfo = styled.div`
+  display: flex;
+  flex: 5;
+  color: #383634
+  `;
+
+const FarmPhoto = styled.img`
+  display: flex;
+  width: 25vw;
+  object-fit: cover;
+  padding-left: 10px;
+`;
+
+const FarmBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 5;
+  color: #383634;
+  padding-left: 25px;
+  line-height: 1.5em;
+  h3 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2.5em;
+  }
+`;
+
+const FarmerDetail = () => {
+  const params = useParams();
+  const [farmerDetails, setFarmerDetails] = useState({});
+  const getFarmerDetails = () => {
+    axios.get(`http://localhost:3000/shop/farmers/${params.farmerId}`)
+      .then((result) => {
+        setFarmerDetails(result.data[0]);
+      })
+      .catch((err) => console.log(err));
+  };
+  useEffect(getFarmerDetails, {});
+
+  return (
+    <>
+      <h1>Meet Our Farmers</h1>
+      <FarmSection>
+        <FarmInfo>
+          <FarmPhoto src={farmerDetails.farmer_url} alt="" />
+          <FarmBox>
+            <h3>{farmerDetails.farmer_name}</h3>
+            {farmerDetails.farmer_story}
+          </FarmBox>
+        </FarmInfo>
+      </FarmSection>
+    </>
+  );
+};
 
 export default FarmerDetail;
