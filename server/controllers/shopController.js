@@ -19,7 +19,7 @@ exports.getProducts = async (req, res) => {
 exports.GetProductDetails = async (req, res) => {
   const { id } = req.params;
   const query = `
-    SELECT * FROM products WHERE product_id = ${id}
+  SELECT products.product_id AS key_product_id, * FROM products LEFT JOIN farmers ON products.farmer_id = farmers.farmer_id LEFT JOIN cart ON products.product_id = cart.product_id WHERE products.product_id = ${id}
   `;
 
   try {
