@@ -45,6 +45,7 @@ const Form = ({ getList, renderCount, user }) => {
           <FeelingsContainer>
 
             <FeelingHeader>Feeling of the Day</FeelingHeader>
+
             <input
               type="radio"
               className="circle"
@@ -105,6 +106,7 @@ const Form = ({ getList, renderCount, user }) => {
               <img src="https://emoji.gg/assets/emoji/8548-birthday.png" width="64px" height="64px" alt="birthday"></img>
             </label>
 
+
           </FeelingsContainer>
         </FormContainer>
 
@@ -151,8 +153,6 @@ max-height: '50px';
 max-width: '100px';
 margin-top: '100px';
 grid-row-start: 1;
-
-
 
 `;
 
