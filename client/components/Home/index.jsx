@@ -11,7 +11,7 @@ const Home = () => (
       <img src="../images/cornucopia.jpg" alt="bountiful bounty of food items" />
     </Title>
     <Links>
-      <StyledLink to="/shop/meals">
+      <StyledLink to="/shop">
         <ButtonToPage>
           <img src="../images/meals.jpg" alt="" />
           <CenterText>
