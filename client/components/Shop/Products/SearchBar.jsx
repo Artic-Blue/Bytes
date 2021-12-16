@@ -1,17 +1,7 @@
 // client/components/Shop/Sidebar.jsx
 // client/components/Shop/Sidebar.jsx
 import React, { useState } from 'react';
-import styled from 'styled-components';
-
-const SearchButton = styled.input`
-  border: none;
-  color: white;
-  background: #ffe5b4;
-  height: 1.5vw;
-  cursor: pointer;
-  &:hover {
-    background: #ffa500;
-  }`;
+import SearchButton from './SearchBar.styled';
 
 const SearchBar = ({ setCategory }) => {
   const [text, setText] = useState('');

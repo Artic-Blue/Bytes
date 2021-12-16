@@ -3,20 +3,20 @@ import React from 'react';
 import styled from 'styled-components';
 
 const BannerDiv = styled.div`
-width: 106vw;
-height: 30vh;
-margin-left: -3vw;
-margin-right: -2vw;
-margin-bottom: 3vh;
-display: flex;
-align-items: center;
+  width: 106vw;
+  height: 30vh;
+  margin-left: -3vw;
+  margin-right: -2vw;
+  margin-bottom: 3vh;
+  display: flex;
+  align-items: center;
 `;
 
 const BannerImg = styled.img`
-width: 103vw;
-height: 20vh;
-margin-left: -3vw;
-margin-bottom: 3vh;
+  width: 103vw;
+  height: 20vh;
+  margin-left: -3vw;
+  margin-bottom: 3vh;
 `;
 
 const BannerTextDiv = styled.div`
