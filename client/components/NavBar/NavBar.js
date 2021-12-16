@@ -12,12 +12,13 @@ const Nav = () => {
     <Container>
       <div>
         <NavLink to="/">
-          <img alt="logo" src="../images/logo.png" />
+          <img alt="logo" src="../images/best-eats-inc.png" />
         </NavLink>
       </div>
       <div>
         <NavLink to="/" activeClassName="active">Home</NavLink>
-        <NavLink to="/shop" activeClassName="active">Shop</NavLink>
+        <NavLink to="/shop" end activeClassName="active">Shop</NavLink>
+        <NavLink to="/shop/farmers" activeClassName="active">Farmers</NavLink>
         <NavLink to="/tracker" activeClassName="active">Lifestyle</NavLink>
         <NavLink to="/cart" activeClassName="active">Cart</NavLink>
         {
