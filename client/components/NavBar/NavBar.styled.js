@@ -5,12 +5,14 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-bottom: 10px;
 
   > * {
     &:first-child {
-      margin: 0 20px;
+      margin: 0;
       img {
-        width: 125px;
+        margin: 20px 0;
+        width: 100px;
       }
     }
   }
