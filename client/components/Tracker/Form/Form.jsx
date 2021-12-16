@@ -37,7 +37,7 @@ const Form = ({ getList, renderCount, user }) => {
           <ThoughtsContainer>
 
             <h2>Food For Thought</h2>
-            <ThoughtInput type="text" onChange={(event) => updateThoughts(event.target.value)} />
+            <ThoughtInput type="textarea" onChange={(event) => updateThoughts(event.target.value)} />
 
             <button onClick={(event) => handleSubmit(event)}>Submit</button>
 
@@ -129,8 +129,8 @@ margin-top: 35px;
 `;
 
 const ThoughtInput = styled.input.attrs((props) => ({
-  type: 'text',
-  size: props.size || '2em',
+  type: 'textarea',
+  size: props.size || '2.5em',
 }))`
   margin-top: 20px;
   color: #000000;
