@@ -1,9 +1,8 @@
 // client/components/Shop/Products/Products.jsx/
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
-import { Grid, Col } from '@mantine/core';
+import { Col } from '@mantine/core';
 
 const GridFlex = styled.div`
 height: 250px;

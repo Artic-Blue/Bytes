@@ -1,5 +1,5 @@
 // client/components/Shop/Sidebar.jsx
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Sidebar = ({ setCategory, category }) => {
@@ -13,8 +13,6 @@ const Sidebar = ({ setCategory, category }) => {
   ];
 
   const handleSidebarClick = (event) => {
-    console.log('clicked!');
-    console.log(event.target.innerText);
     if (event.target.innerText === 'Meals') {
       setCategory('Meal');
     } else {

@@ -1,6 +1,5 @@
 // client/components/Shop/Products/Products.jsx/
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import { SimpleGrid, Col } from '@mantine/core';
