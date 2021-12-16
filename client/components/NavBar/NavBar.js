@@ -12,7 +12,7 @@ const Nav = () => {
     <Container>
       <div>
         <NavLink to="/">
-          <img alt="logo" src="../images/logo.png" />
+          <img alt="logo" src="../images/best-eats-inc.png" />
         </NavLink>
       </div>
       <div>
