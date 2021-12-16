@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Grid, Col } from '@mantine/core';
 
 const GridFlex = styled.div`
-height: 33vh;
+height: 250px;
 width: 200px;
 display: flex;
 position: relative;
@@ -24,18 +24,21 @@ const PaddedImages = styled.img`
   cursor: pointer;
 `;
 
-const FarmDiv = styled.div`
+const FarmDiv = styled.p`
   color: grey;
+  cursor: pointer;
+  &:hover {
+    color: #3D8B8E;
+  }
 `;
 
 const ProductDiv = styled.div`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   inline-size: 200px;
   overflow-wrap: break-word;
 `;
 
 const PriceSpan = styled.span`
-font-size: 1.2rem;
 font-weight: bold;
 color: black;
 width: 200px;
@@ -69,7 +72,7 @@ const ProductGrid = ({ products }) => {
         <GridFlex>
           <div>
             <PaddedImages src={product.image_url} alt="" onClick={() => navigate(`/shop/products/${product.key_product_id}`)} />
-            <FarmDiv>
+            <FarmDiv onClick={() => navigate(`/shop/farmers/${product.farmer_id}`)}>
               {product.farmer_name}
               {' '}
               Farms

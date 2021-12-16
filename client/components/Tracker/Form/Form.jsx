@@ -45,16 +45,70 @@ const Form = ({ getList, renderCount, user }) => {
           <FeelingsContainer>
 
             <FeelingHeader>Feeling of the Day</FeelingHeader>
-            <input type="radio" className="circle" name="feeling" value={1} id="bad" style={{ border: '10px solid #ff0000' }} onChange={(event) => updateFeeling(event.target.value)} />
-            <label className="radio" htmlFor="red">bad</label>
-            <input type="radio" className="lightred" name="feeling" value={2} id="kindabad" style={{ border: '10px solid #EF959D' }} onChange={(event) => updateFeeling(event.target.value)} />
-            <label className="radio" htmlFor="pink">medium bad</label>
-            <input type="radio" className="circle" name="feeling" value={3} id="medium" style={{ border: '10px solid #ffffff' }} onChange={(event) => updateFeeling(event.target.value)} />
-            <label className="radio" htmlFor="white">medium</label>
-            <input type="radio" className="circle" name="feeling" value={4} id="kindagreat" style={{ border: '10px solid #a5f89b' }} onChange={(event) => updateFeeling(event.target.value)} />
-            <label className="radio" htmlFor="lightgreen">medium great</label>
-            <input type="radio" className="circle" name="feeling" value={5} id="great" style={{ border: '10px solid #00ff4c' }} onChange={(event) => updateFeeling(event.target.value)} />
-            <label className="radio" htmlFor="green">great</label>
+            <input
+              type="radio"
+              className="circle"
+              name="feeling"
+              value={1}
+              id="bad"
+              onChange={(event) => updateFeeling(event.target.value)}
+            />
+
+            <label className="radio" htmlFor="red">
+              <img src="https://emoji.gg/assets/emoji/9528-sad-sweat.png" width="64px" height="64px" alt="sad_sweat" />
+            </label>
+
+            <input
+              type="radio"
+              className="lightred"
+              name="feeling"
+              value={2}
+              id="kindabad"
+              onChange={(event) => updateFeeling(event.target.value)}
+            />
+
+            <label className="radio" htmlFor="pink">
+              <img src="https://emoji.gg/assets/emoji/9004-super-frown.png" width="64px" height="64px" alt="super_frown" />
+            </label>
+
+            <input
+              type="radio"
+              className="circle"
+              name="feeling"
+              value={3}
+              id="medium"
+              onChange={(event) => updateFeeling(event.target.value)}
+            />
+
+            <label className="radio" htmlFor="white">
+              <img src="https://emoji.gg/assets/emoji/2542-imposter.png" width="64px" height="64px" alt="imposter" />
+            </label>
+
+            <input
+              type="radio"
+              className="circle"
+              name="feeling"
+              value={4}
+              id="kindagreat"
+              onChange={(event) => updateFeeling(event.target.value)}
+            />
+
+            <label className="radio" htmlFor="lightgreen">
+              <img src="https://emoji.gg/assets/emoji/8664-coolangel.png" width="64px" height="64px" alt="coolangel" />
+            </label>
+
+            <input
+              type="radio"
+              className="circle"
+              name="feeling"
+              value={5}
+              id="great"
+              onChange={(event) => updateFeeling(event.target.value)}
+            />
+
+            <label className="radio" htmlFor="green">
+              <img src="https://emoji.gg/assets/emoji/8548-birthday.png" width="64px" height="64px" alt="birthday" />
+            </label>
 
           </FeelingsContainer>
         </FormContainer>
@@ -64,60 +118,18 @@ const Form = ({ getList, renderCount, user }) => {
   );
 };
 
-const StyledForm = styled.form`
-
-	&#feeling {
-		input[type="radio"] {
-			-webkit-appearance: none;
-			width: 90px;
-			height: 90px;
-			border: none;
-			cursor: pointer;
-			transition: border .2s ease;
-			filter: grayscale(100%);
-			margin: 0 5px;
-			transition: all .2s ease;
-
-			&:hover, &:checked {
-				filter:	grayscale(0);
-			}
-
-			&:focus {
-				outline: 0;
-			}
-
-			&.happy {
-				background: url('https://res.cloudinary.com/turdlife/image/upload/v1492864443/happy_ampvnc.svg') center;
-				background-size: cover;
-			}
-
-			&.neutral {
-				background: url('https://res.cloudinary.com/turdlife/image/upload/v1492864443/neutral_t3q8hz.svg') center;
-				background-size: cover;
-			}
-			&.sad {
-				background: url('https://res.cloudinary.com/turdlife/image/upload/v1492864443/sad_bj1tuj.svg') center;
-				background-size: cover;
-			}
-		}
-
-}
-`
-
 const FeelingHeader = styled.h2`
 margin-bottom: 35px;
-`
+`;
 
 const WelcomeMessage = styled.h2`
 
 margin-bottom: 35px;
 margin-top: 35px;
-`
+`;
 
 const ThoughtInput = styled.input.attrs((props) => ({
-  // we can define static props
   type: 'text',
-  // or we can define dynamic ones
   size: props.size || '2em',
 }))`
   margin-top: 20px;
@@ -131,16 +143,14 @@ const ThoughtInput = styled.input.attrs((props) => ({
 
 const FeelingsContainer = styled.div`
 padding: '50px';
-/* background-color: teal; */
 max-height: '50px';
 max-width: '100px';
 margin-top: '100px';
 grid-row-start: 1;
+
 `;
 
 const ThoughtsContainer = styled.div`
-/* background-color: pink; */
-/* justify-content: space-between; */
 grid-column-start: col-start 2;
 height: '50px';
 width: '100px';
