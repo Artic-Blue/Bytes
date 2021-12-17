@@ -16,7 +16,7 @@ exports.getProducts = async (req, res) => {
   }
 };
 
-exports.GetProductDetails = async (req, res) => {
+exports.getProductDetails = async (req, res) => {
   const { id } = req.params;
   const query = `
   SELECT products.product_id AS key_product_id, * FROM products LEFT JOIN farmers ON products.farmer_id = farmers.farmer_id LEFT JOIN cart ON products.product_id = cart.product_id WHERE products.product_id = ${id}
@@ -66,6 +66,25 @@ exports.getFarmerDetails = async (req, res) => {
 
   try {
     const result = await queryDB(pool, query);
+    res.send(result.rows);
+  } catch (err) {
+    console.log('Error: ', err.message);
+    res.sendStatus(500);
+  }
+};
+
+exports.getCart = async (req, res) => {
+  const { id } = req.params;
+  const query = `
+    SELECT products.product_name, products.image_url, products.quantity, products.price, cart.cart_quantity
+    FROM cart, products
+    WHERE cart.user_id = ${id}
+    AND products.product_id = cart.product_id
+  `;
+
+  try {
+    const result = await queryDB(pool, query);
+
     res.send(result.rows);
   } catch (err) {
     console.log('Error: ', err.message);

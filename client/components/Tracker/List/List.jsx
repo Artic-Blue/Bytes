@@ -8,7 +8,6 @@ const List = ({ thoughtsList, getList, renderCount, setRenderCount, }) => {
     getList(renderCount);
   }, [renderCount]);
 
-
   const setRenderCountHandler = () => {
     setRenderCount(renderCount + 4);
   };
