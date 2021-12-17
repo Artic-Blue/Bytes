@@ -1,6 +1,9 @@
 // client/components/Shop/Sidebar.jsx
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import {
+  SidebarItem,
+  SelectedSidebarItem,
+} from './Sidebar.styled';
 
 const Sidebar = ({ setCategory, category }) => {
   const sidebarCategories = [
@@ -13,28 +16,12 @@ const Sidebar = ({ setCategory, category }) => {
   ];
 
   const handleSidebarClick = (event) => {
-    console.log('clicked!');
-    console.log(event.target.innerText);
     if (event.target.innerText === 'Meals') {
       setCategory('Meal');
     } else {
       setCategory(event.target.innerText);
     }
   };
-
-  const SidebarItem = styled.p`
-    margin: 2vh;
-    textAlign: left;
-    cursor: pointer;
-    font-size: 1.2em;
-  `;
-
-  const SelectedSidebarItem = styled.p`
-    margin: 2vh;
-    textAlign: left;
-    font-weight: bold;
-    font-size: 1.2em;
-    `;
 
   return (
     sidebarCategories.map((item) => (

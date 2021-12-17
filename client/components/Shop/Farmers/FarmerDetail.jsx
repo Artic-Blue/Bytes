@@ -3,14 +3,6 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
-const DescriptionTitle = styled.div`
-display: flex;
-flex: 1;
-font-size: 12px;
-color: #91968A;
-font-weight: bold;
-`;
-
 const FarmSection = styled.div`
 font-weight: 200;
 display: flex;

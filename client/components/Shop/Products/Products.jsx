@@ -1,14 +1,17 @@
 // client/components/Shop/Products/Products.jsx/
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import styled from 'styled-components';
 import axios from 'axios';
-import { SimpleGrid, Col } from '@mantine/core';
-import Sidebar from './Sidebar.jsx';
-import Banner from './Banner.jsx';
-import SearchBar from './SearchBar.jsx';
-import ProductGrid from './ProductGrid.jsx';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SimpleGrid } from '@mantine/core';
+import Sidebar from './Sidebar';
+import Banner from './Banner';
+import SearchBar from './SearchBar';
+import ProductGrid from './ProductGrid';
+import {
+  Div,
+  FlexBoxContainer,
+  SidebarContainer,
+  SearchAndProductsContainer,
+} from './Products.styled';
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -22,35 +25,6 @@ const ProductList = () => {
       .catch((err) => console.log(err));
   };
   useEffect(getProducts, [category]);
-
-  // from loungeo
-  const Div = styled.div`
-  height: 95vh;
-  width: 95vw;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-`;
-
-  const FlexBoxContainer = styled.div`
-    display: flex;
-    width: 95vw;
-    position: relative;
-  `;
-
-  const SidebarContainer = styled.div`
-    display: flex;
-    width: 15%;
-    height: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-  `;
-  const SearchAndProductsContainer = styled.div`
-    display: flex;
-    width: 85%;
-    height: 100%;
-    flex-direction: column;
-  `;
 
   return (
     <Div>
