@@ -12,7 +12,7 @@ const Cart = () => {
   const user = useUser();
 
   const getCart = () => {
-    axios.get(`/shop/cart/${user}`)
+    axios.get(`/api/shop/cart/${user}`)
       .then((data) => {
         if (data) {
           setCartItems(data.data);

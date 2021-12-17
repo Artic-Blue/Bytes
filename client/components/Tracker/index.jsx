@@ -11,20 +11,20 @@ const Tracker = () => {
   const user = useUser();
 
   const getList = (renderAmount) => {
-    axios.get(`/tracker/getList/${renderAmount}/${user}`)
+    axios.get(`/api/tracker/getList/${renderAmount}/${user}`)
       .then(({ data }) => setThoughtsList(data))
       .catch((err) => console.log('Oops! Coould not get the data requested! :( Here is your error: ', err));
   };
 
   return (
     <TrackerDiv>
-
-
       <StyledBanner>
         <StyledImage>
-          <img src="https://fastcdn.impakter.com/wp-content/uploads/2018/09/lifestyle.jpg?strip=all&lossy=1&quality=92&ssl=1" alt="health lady basking in the glory that is life" style={{ width: '800px'
-        }} />
-
+          <img
+            src="https://fastcdn.impakter.com/wp-content/uploads/2018/09/lifestyle.jpg?strip=all&lossy=1&quality=92&ssl=1"
+            alt="health lady basking in the glory that is life"
+            style={{ width: '800px' }}
+          />
         </StyledImage>
 
       </StyledBanner>
@@ -43,7 +43,6 @@ const Tracker = () => {
     </TrackerDiv>
   );
 };
-
 
 const StyledBanner = styled.div`
   overflow: hidden;

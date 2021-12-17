@@ -36,8 +36,10 @@ const ProductDetail = () => {
   const user = useUser();
   const navigate = useNavigate();
 
+  console.log(params);
+
   const getProductDetails = () => {
-    axios.get(`http://localhost:3000/shop/product/${params.productId}`)
+    axios.get(`/api/shop/product/${params.productId}`)
       .then((result) => {
         setProductDetails(result.data[0]);
         setSplitInstructions(result.data[0].instructions.split(/[\n]/));
@@ -89,7 +91,7 @@ const ProductDetail = () => {
               if (user === null) {
                 alert('Please log in before adding to cart.');
               } else {
-                axios.put('http://localhost:3000/shop/cart', {
+                axios.put('/api/shop/cart', {
                   userId: user,
                   productId: params.productId,
                   quantity: cartValue,
