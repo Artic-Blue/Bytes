@@ -14,7 +14,7 @@ const FarmerDetail = () => {
   const params = useParams();
   const [farmerDetails, setFarmerDetails] = useState({});
   const getFarmerDetails = () => {
-    axios.get(`http://localhost:3000/shop/farmers/${params.farmerId}`)
+    axios.get(`/api/shop/farmers/${params.farmerId}`)
       .then((result) => {
         const farmerInfo = result.data[0];
         setFarmerDetails(farmerInfo);

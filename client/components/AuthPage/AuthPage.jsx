@@ -11,7 +11,7 @@ const AuthPage = () => (
       <AuthForm />
     </div>
     <div>
-      <img alt="pile of pumpkins" src="../images/kerstin-wrba-zeInZepl_Hw-unsplash.jpg" />
+      <img alt="pile of pumpkins" src="/images/kerstin-wrba-zeInZepl_Hw-unsplash.jpg" />
     </div>
   </Container>
 );

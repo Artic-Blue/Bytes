@@ -52,7 +52,7 @@ const FarmLink = styled.p`
 const Farmers = () => {
   const [farmersDetails, setFarmersDetails] = useState([]);
   const getFarmers = () => {
-    axios.get('http://localhost:3000/shop/farmers')
+    axios.get('/api/shop/farmers')
       .then((result) => {
         setFarmersDetails(result.data);
       })

@@ -17,7 +17,7 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState('Meal');
   const getProducts = () => {
-    axios.get(`http://localhost:3000/shop/products/${category}`)
+    axios.get(`/api/shop/products/${category}`)
       .then((result) => {
         console.log('success');
         setProducts(result.data);

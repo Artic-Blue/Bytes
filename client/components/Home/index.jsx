@@ -5,15 +5,15 @@ import styled from 'styled-components';
 const Home = () => (
   <Homepage>
     <Title>
-      <img src="../images/cornucopia.jpg" alt="bountiful bounty of food items" />
+      <img src="/images/cornucopia.jpg" alt="bountiful bounty of food items" />
       <LogoDiv>
-        <img src="../images/best-eats-inc.png" alt="logo" />
+        <img src="/images/best-eats-inc.png" alt="logo" />
       </LogoDiv>
     </Title>
     <Links>
       <ButtonToPage>
         <StyledLink to="/shop">
-          <img src="../images/meals.jpg" alt="" />
+          <img src="/images/meals.jpg" alt="" />
           <CenterText>
             Meals
           </CenterText>
@@ -21,7 +21,7 @@ const Home = () => (
       </ButtonToPage>
       <ButtonToPage>
         <StyledLink to="/tracker">
-          <img src="../images/lifestyle.jpg" alt="" />
+          <img src="/images/lifestyle.jpg" alt="" />
           <CenterText>
             Lifestyle
           </CenterText>
@@ -29,7 +29,7 @@ const Home = () => (
       </ButtonToPage>
       <ButtonToPage>
         <StyledLink to="/shop/farmers">
-          <img src="../images/home-farmer-image.jpeg" alt="" />
+          <img src="/images/home-farmer-image.jpeg" alt="" />
           <CenterText>
             Farmers
           </CenterText>
@@ -75,7 +75,7 @@ const ButtonToPage = styled.div`
   position: relative;
   margin: 5vh 5vw;
   margin-top: 5vh;
-  
+
   img {
     box-shadow: 2px 2px 5px darkgrey;
     width: 22vw;

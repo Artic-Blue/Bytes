@@ -12,7 +12,7 @@ const Form = ({ getList, renderCount, user }) => {
 
     const trackDate = new Date(Date.now()).toLocaleString().split(',')[0].split('/').join('-');
 
-    axios.post('/tracker/postListItem', {
+    axios.post('/api/tracker/postListItem', {
       feeling, thoughts, trackDate, user,
     })
       .then(() => {

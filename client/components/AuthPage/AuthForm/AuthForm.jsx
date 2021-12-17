@@ -69,7 +69,7 @@ const AuthenticationForm = (
       const email = form.getInputProps('email').value;
       const password = form.getInputProps('password').value;
 
-      const result = await axios.post(`/auth/${formType}`, {
+      const result = await axios.post(`/api/auth/${formType}`, {
         fname, lname, email, password,
       });
 
